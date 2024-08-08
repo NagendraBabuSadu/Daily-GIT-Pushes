@@ -40,7 +40,6 @@ app.post("/signup", async function (req, res) {
 // get method for the user to get back with the username and password
 app.get("/users", async function (req, res){
         try{
-
                 const username = req.headers.username;
                 const user = await User.findOne({username: username})
                 console.log(user);

@@ -37,10 +37,9 @@ function userExists(username, password) {
         if (ALL_USERS.find(user => user.username == username && user.password == password)) {
                 userExists = true;
         }
-
         return userExists;
-
 }
+
 
 app.post("/signin", function (req, res) {
         const username = req.body.username;
@@ -52,7 +51,7 @@ app.post("/signin", function (req, res) {
                 });
         }
 
-        var token = jwt.sign({ username: username }, jwtPassword);
+        var token = jwt.sign({username: username}, jwtPassword);
         return res.json({
                 token,
         });

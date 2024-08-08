@@ -45,7 +45,7 @@ app.get("/users", async function (req, res){
                 const user = await User.findOne({username: username})
                 console.log(user);
                 res.json({
-                        user: user
+                        userDetails : user
                 })
         } catch{
                 res.status(411).send("Something bad happened.");

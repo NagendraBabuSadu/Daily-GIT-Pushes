@@ -50,4 +50,79 @@ router.post("/save", async function (req, res) {
 });
 
 
+router.get("/findfirst", async function (req, res) {
+        const data = await StudentModel.findOne({ StudentId: { $gt: 103 } });
+        res.status(200).json({
+                Student: data
+        })
+
+
+})
+
+// Delete route using  get(hardcoded)
+router.get("/delete", async function (req, res) {
+        const data = await StudentModel.findOneAndDelete({ StudentId: 106 })
+        res.status(200).json({
+                msg: "Student is deleted."
+        })
+})
+
+// Delete route using post request
+router.post("/delete", async function (req, res) {
+
+        try {
+                const data = await StudentModel.findOneAndDelete({ StudentId: req.body.StudentId });
+
+                if (data) {
+
+                        res.status(200).json({
+                                msg: "Student is deleted."
+                        })
+                        console.log(data)
+                } else {
+                        res.status(411).json({
+                                msg: "Student not found."
+                        })
+                }
+        } catch (err) {
+                res.status(500).json({
+                        msg: "An error occured",
+                        error: err.message
+                })
+        }
+
+})
+
+// Update route using post request
+
+router.post("/update", async function (req, res) {
+
+        try {
+                const data = await StudentModel.findOneAndUpdate(
+                        { StudentId: req.body.StudentId },
+                        { Name: req.body.newName },
+                        { new: true }
+                );
+
+                if (data) {
+
+                        res.status(200).json({
+                                msg: "Student is updated."
+                        })
+                        console.log(data)
+                } else {
+                        res.status(411).json({
+                                msg: "Student not found."
+                        })
+                }
+        } catch (err) {
+                res.status(500).json({
+                        msg: "An error occured",
+                        error: err.message
+                })
+        }
+
+})
+
+
 module.exports = router;

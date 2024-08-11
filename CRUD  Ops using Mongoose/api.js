@@ -1,10 +1,14 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const router = express.Router();
+const dotenv = require("dotenv");
+dotenv.config();
+
+console.log(process.env.QUERY);
 const StudentModel = require("./studentSchema");
 
 // connecting to a database
-const query = "mongodb+srv://nagendrababusadu:yYIfOmXS5mtVt7xQ@cluster0.qjndx4s.mongodb.net/College";
+const query = process.env.QUERY;
 
 const db = (query);
 

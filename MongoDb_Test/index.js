@@ -31,7 +31,6 @@ app.post("/signup", async function (req, res) {
                         name: name,
                         username: username,
                         password: password,
-                        fullname: fullname
                 });
 
                 // save the user

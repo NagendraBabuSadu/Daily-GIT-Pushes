@@ -41,11 +41,7 @@ app.post("/signup", async function (req, res) {
                 const user = new User({
                         name: name,
                         username: username,
-<<<<<<< Updated upstream
-                        password: password,
-=======
                         password: password
->>>>>>> Stashed changes
                 });
 
                 // save the user

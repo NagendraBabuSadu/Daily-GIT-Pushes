@@ -20,7 +20,7 @@ mongoose.connect(
 
 
 // Creating User schema, and connecting to the 'users' collection.
-const User = mongoose.model("Users12", {
+const User = mongoose.model("Users", {
         name: String,
         username: String,
         password: String

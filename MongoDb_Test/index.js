@@ -60,8 +60,7 @@ app.post("/signup", async function (req, res) {
 // get method for the user to get back with the username and password
 app.get("/users", async function (req, res) {
         try {
-                console.log("Headers: ", req.headers);
-                // pass the username in the headers
+               // pass the username in the headers
                 const username = req.headers.username;
                 const user = await User.find();
 
@@ -87,25 +86,18 @@ app.post("/signin", async function (req, res) {
         try {
 
                 const username = req.headers.username;
-                const password = req.headers.password;
 
                 if (!username) {
                         return res.status(400).json({ msg: "Username header is required." });
                 }
-
-                console.log(req.headers)
-
                 const siginResponse = schema2.safeParse({ username });
                 if (!siginResponse.success) {
-                        console.log("user is invalid")
                         res.status(411).json({
                                 msg: "Incorrect data."
                         })
                 }
                 const user = await User.findOne({ username: username });
-                console.log(username);
                 if (user) {
-                        console.log(user.password)
                         return res.status(200).json({
                                 msg: "User signed in successfully."
                         })

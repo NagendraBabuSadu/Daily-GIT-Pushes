@@ -15,9 +15,8 @@ const schema = zod.object({
 
 // Connecting mongoose - MongoDb
 mongoose.connect(
-        "mongodb+srv://nagendrababusadu:yYIfOmXS5mtVt7xQ@cluster0.qjndx4s.mongodb.net/userappnew",
+        "mongodb+srv://nagendrababusadu:yYIfOmXS5mtVt7xQ@cluster0.qjndx4s.mongodb.net/newUserDb",
 );
-
 
 // Creating User schema, and connecting to the 'users' collection.
 const User = mongoose.model("Users", {
@@ -25,7 +24,6 @@ const User = mongoose.model("Users", {
         username: String,
         password: String
 })
-
 
 
 app.post("/signup", async function (req, res) {
@@ -46,10 +44,9 @@ app.post("/signup", async function (req, res) {
 
                 // save the user
                 if (response.success) {
-                        user.save();
-                        // show the output as status 200, with a clear message.
+                        user.save(); // saving the user into Users db collection.
                         res.status(200).json({
-                                msg: "User created successfully."
+                                msg: "User created successfully." // show the output as status 200, with a clear message. 
                         });
                 } else {
                         res.status(411).json({
@@ -63,14 +60,16 @@ app.post("/signup", async function (req, res) {
 // get method for the user to get back with the username and password
 app.get("/users", async function (req, res) {
         try {
+                console.log("Headers: ", req.headers);
                 // pass the username in the headers
                 const username = req.headers.username;
+                const user = await User.find();
 
-                // find one user with the username-header
-                const user = await User.findOne({ username: username })
-                console.log(user);
+                if (!user) {
+                        return res.status(404).send("User not found.");
+                }
                 // return or show the user details
-                res.json({
+                return res.status(200).json({
                         user_details: user
                 })
         } catch {
@@ -78,4 +77,49 @@ app.get("/users", async function (req, res) {
         }
 });
 
+
+app.post("/signin", async function (req, res) {
+
+        const schema2 = zod.object({
+                username: zod.string(),
+        })
+
+        try {
+
+                const username = req.headers.username;
+                const password = req.headers.password;
+
+                if (!username) {
+                        return res.status(400).json({ msg: "Username header is required." });
+                }
+
+                console.log(req.headers)
+
+                const siginResponse = schema2.safeParse({ username });
+                if (!siginResponse.success) {
+                        console.log("user is invalid")
+                        res.status(411).json({
+                                msg: "Incorrect data."
+                        })
+                }
+                const user = await User.findOne({ username: username });
+                console.log(username);
+                if (user) {
+                        console.log(user.password)
+                        return res.status(200).json({
+                                msg: "User signed in successfully."
+                        })
+
+                } else {
+                        return res.status(404).json({
+                                msg: "User not found.",
+                        });
+                }
+        } catch (err) {
+                console.error("Error occurred:", err);
+                return res.status(500).json({
+                        msg: "Something went wrong."
+                })
+        }
+})
 app.listen(3000);

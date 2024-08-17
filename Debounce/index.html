@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <script>
+                let timer = null;
+                async function debounceSum() {
+                        clearTimeout(timer);
+                        timer = setTimeout(() => {
+                                sum();
+                        }, 1000);
+                }
+
+                async function sum() {
+                        const ip1 = document.getElementById('input1').value
+                        const ip2 = document.getElementById('input2').value
+                        const ans = document.getElementById('ans')
+
+                        try {
+                                const response = await fetch(`http://localhost:3000/sum?a=${ip1} &b=${ip2}`)
+                                const data = await response.text();
+                                ans.innerText = `${data}`
+                                console.log(data)
+                        } catch (error) {
+                                console.log(error);
+                        }
+                }
+
+        </script>
+</head>
+
+<body>
+        <h3>Sum of 2 Numbers</h3>
+        <input oninput="debounceSum()" type="nummber" id="input1">
+        <br>
+        <br>
+        <input oninput="debounceSum()" type="nummber" id="input2">
+        <br>
+        <br>
+        <p id="ans"></p>
+        <br><br>
+</body>
+
+</html>

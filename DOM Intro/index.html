@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <script>
+                function sum() {
+                        const ip1 = document.getElementById('input1').value
+                        const ip2 = document.getElementById('input2').value
+                        const ans = document.getElementById('ans')
+                        let total = parseInt(ip1) + parseInt(ip2)
+                        ans.innerText = `Sum is ${total}`
+                }
+        </script>
+</head>
+<body>
+        <input type="nummber" id="input1">
+        <br>
+        <br>
+        <input type="nummber" id="input2">
+        <br>
+        <br>
+        <button onclick="sum()">Calculate Sum</button>
+        <br>
+        <p id="ans"></p>
+</body>
+</html>

@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
         <script>
-                async function  sum() {
+                async function sum() {
                         const ip1 = document.getElementById('input1').value
                         const ip2 = document.getElementById('input2').value
                         const ans = document.getElementById('ans')
                         // let total = parseInt(ip1) + parseInt(ip2)
                         // ans.innerText = `Sum is ${total}`\
-                        try{                                
+                        try {
                                 const response = await fetch(`http://localhost:3000/sum?a=${ip1} &b=${ip2}`)
                                 const data = await response.text();
                                 ans.innerText = `${data}`
@@ -20,9 +21,33 @@
                                 console.log(error);
                         }
                 }
+
+
+                // Interest calculator
+                async function calcInterest() {
+                        const principal = document.getElementById("principal").value;
+                        const rate = document.getElementById("rate").value;
+                        const time = document.getElementById("time").value;
+                        try {
+                                const response = await fetch(`http://localhost:3000/interest?principal=${principal} &rate=${rate} &time=${time * 12}`)
+                                const answer = await response.json();
+                                console.log(answer);
+
+                                // document.getElementById("calcInterest").innerHTML = JSON.stringify(answer);
+                                document.getElementById("calcInterest").innerHTML = `Interest Rate: ${answer['Interest Rate']}, Total: ${answer.Total}`;
+
+                        } catch (error) {
+                                console.log(error)
+                        }
+                }
+
+
+
         </script>
 </head>
+
 <body>
+        <h3>Sum of 2 Numbers</h3>
         <input type="nummber" id="input1">
         <br>
         <br>
@@ -32,5 +57,23 @@
         <button onclick="sum()">Calculate Sum</button>
         <br>
         <p id="ans"></p>
+        <br><br>
+
+        <h3>Interest Calculator</h3>
+        <label for="principal">Principal: </label>
+        <input type="number" id="principal">
+        <br><br>
+        <label for="rate">Rate: </label>
+        <input type="number" id="rate">
+        <br><br>
+        <label for="time">Time: </label>
+        <input type="number" id="time">
+        <br><br>
+        <button onclick="calcInterest()">Calculate Interest</button>
+
+        <p id="calcInterest"></p>
+
+
 </body>
+
 </html>

@@ -5,12 +5,20 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
         <script>
-                function sum() {
+                async function  sum() {
                         const ip1 = document.getElementById('input1').value
                         const ip2 = document.getElementById('input2').value
                         const ans = document.getElementById('ans')
-                        let total = parseInt(ip1) + parseInt(ip2)
-                        ans.innerText = `Sum is ${total}`
+                        // let total = parseInt(ip1) + parseInt(ip2)
+                        // ans.innerText = `Sum is ${total}`\
+                        try{                                
+                                const response = await fetch(`http://localhost:3000/sum?a=${ip1} &b=${ip2}`)
+                                const data = await response.text();
+                                ans.innerText = `${data}`
+                                console.log(data)
+                        } catch (error) {
+                                console.log(error);
+                        }
                 }
         </script>
 </head>

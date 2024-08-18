@@ -7,11 +7,17 @@
         <title>Document</title>
         <script>
                 let timer = null;
+                // async function debounceSum() {
+                //         clearTimeout(timer);
+                //         timer = setTimeout( // without anonymous function cannot delay the input, and in the Network tab, server will take all the requests whenever wew give any input change. This will make server heavy.
+                //                 sum(), 1000);
+
+                // }
                 async function debounceSum() {
                         clearTimeout(timer);
-                        timer = setTimeout( // without anonymous function cannot delay the input, and in the Network tab, server will take all the requests whenever wew give any input change. This will make server heavy.
-                                sum(), 1000);
-                      
+                        timer = setTimeout(() => { // with an anonymous function, it works as delayed function. Here, server only takes the request after 1 second whenever user stops giving input. This is the perfect way to do debouncing
+                                sum()
+                        }, 1000);
                 }
 
                 async function sum() {

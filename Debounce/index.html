@@ -9,9 +9,9 @@
                 let timer = null;
                 async function debounceSum() {
                         clearTimeout(timer);
-                        timer = setTimeout(() => {
-                                sum();
-                        }, 1000);
+                        timer = setTimeout( // without anonymous function cannot delay the input, and in the Network tab, server will take all the requests whenever wew give any input change. This will make server heavy.
+                                sum(), 1000);
+                      
                 }
 
                 async function sum() {
@@ -30,9 +30,6 @@
                 }
 
         </script>
-        <style>
-              
-        </style>
 </head>
 
 <body>

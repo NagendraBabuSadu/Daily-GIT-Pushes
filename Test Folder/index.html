@@ -13,6 +13,30 @@
                         para.innerText = "This is a paragraph created via DOM.";
                         document.body.appendChild(para);
                 }
+
+                let id = 1;
+
+                function func2() {
+                        const form2 = document.getElementById("form2");
+                        const num1 = document.getElementById("num1").value;
+                        const num2 = document.getElementById("num2").value;
+
+                        const newDiv = document.createElement("div");
+                        const newButton = document.createElement("button");
+                        form2.appendChild(newDiv);
+                        newDiv.appendChild(newButton);
+                        newButton.innerHTML = "New Button";
+                        newButton.setAttribute("onclick", `hello(${id})`)
+                        newDiv.setAttribute("id", id)
+                        id = id + 1;
+                        return newDiv
+                                
+                }
+
+                function hello(newId){
+                        const helloDiv = document.getElementById(newId);
+                        helloDiv.children[0].innerHTML = "hello";                       
+                }
         </script>
 </head>
 <body>
@@ -23,6 +47,16 @@
                 <p>Click the "Try it" button to display the number of elements.</p>
                 <button onclick="myFunction()">Try it</button>
                 <p id="displayspace"></p>
+        </form>
+
+        <form id="form2" action="#">
+                <label for="num1">Num1: </label>
+                <input type="text" id="num1">
+                <br> <br>
+                <label for="num2" >Num2: </label>
+                <input type="text" id="num2">
+                <br> <br>
+                <button id="button" type="button" onclick="func2()">Click me</button>
         </form>
 </body>
 </html>

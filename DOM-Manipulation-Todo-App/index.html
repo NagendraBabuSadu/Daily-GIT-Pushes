@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <script>
+                let globalId = 1;
+
+                function markAsDone(todoId) {
+                        const parent = document.getElementById(todoId);
+                        console.log(todoId);
+                        if(parent.children[2].innerHTML = "Mark as Done") {
+                             return   parent.children[2].innerHTML = "Done!"
+                        } else{ 
+                                return  parent.children[2].innerHTML = "Mark as Done";
+                        }
+
+                }
+                function createChild(title, description, id) {
+                        const childDiv = document.createElement("div");
+                        const grandChild1 = document.createElement("div");
+                        grandChild1.innerHTML = title;
+                        const grandChild2 = document.createElement("div");
+                        grandChild2.innerHTML = description;
+                        const grandChild3 = document.createElement("button");
+                        grandChild3.innerHTML = "Mark as Done";
+                        grandChild3.setAttribute("onclick", `markAsDone(${id})`);
+                        childDiv.append(grandChild1, grandChild2, grandChild3)
+                        childDiv.setAttribute("id", id);
+                       
+                        return childDiv;
+                }
+
+                function addTodo() {
+                        const title = document.getElementById('title').value;
+                        const description = document.getElementById('description').value;
+                        const container = document.getElementById('container');
+                        container.appendChild(createChild(title, description, globalId));
+                        globalId = globalId + 1;
+                }
+        </script>
+</head>
+
+<body>
+        <label for="title">Title: </label>
+        <input type="text" id="title" placeholder="title"> <br><br>
+        <label for="description">Description:</label>
+        <input type="text" id="description" placeholder="description"> <br> <br>
+        <button onclick="addTodo()">Add Todo</button>
+        <div id="container">
+
+        </div>
+</body>
+
+</html>

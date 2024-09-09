@@ -1,2 +1,0 @@
-# Node.js CRUD Operations Using Mongoose and MongoDB Atlas
-- MongooseJs: Mongoose is basically a package that serves as a mediator between the NodeJS application and the MongoDB server. It is an Object Document Mapper(ODM) that allows us to define objects with a strongly-typed schema that is mapped to a MongoDB document. Mongoose supports all the CRUD operations – Creating, Retrieving, Updating, and Deleting.

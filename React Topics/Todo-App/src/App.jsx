@@ -2,9 +2,6 @@ import { useState } from 'react';
 
 
 function App() {
-	const [newTodoTitle, setNewTodoTitle] = useState("");
-	const [newTodoDescription, setNewTodoDescription] = useState("");
-
 	const [todos, setTodos] = useState([
 		{
 			id: 1,
@@ -16,6 +13,9 @@ function App() {
 			description: "Desc 2"
 		}
 	])
+
+	const [newTodoTitle, setNewTodoTitle] = useState("");
+	const [newTodoDescription, setNewTodoDescription] = useState("");
 
 	function addTodo() {
 		let newtodo = {
@@ -40,6 +40,13 @@ function App() {
 		setTodos(updatedTodos);
 	}
 
+	function deleteTodo(id) {
+		const updatedTodos = todos.filter((todo) => todo.id !== id) 
+		setTodos(updatedTodos);
+	}
+
+
+
 	return (
 		<div>
 			{/* Add Todo Inputs */}
@@ -51,6 +58,7 @@ function App() {
 					value={newTodoTitle}
 					onChange={(e) => setNewTodoTitle(e.target.value)}
 				/>
+				<br /> <br />
 			</label>
 			<label htmlFor="">
 				Description:
@@ -62,13 +70,13 @@ function App() {
 				/>
 			</label>
 
-
+			<span> </span>
 			<button onClick={addTodo}>Add Todo</button>
 			{todos.map((todo) => {
 				return (
 					<Todo
-						key={todo.id} id={todo.id} title={todo.title} description={todo.description} updateTodo={updateTodo}
-					/>
+						key={todo.id} id={todo.id} title={todo.title} description={todo.description} updateTodo={updateTodo} deleteTodo={deleteTodo}
+					/> 
 				)
 			})}
 		</div>
@@ -81,18 +89,16 @@ function Todo(props) {
 	const [title, setTitle] = useState(props.title);
 	const [description, setDescription] = useState(props.description);
 
-
-
 	function titleMouseOver(e) {
 		setIsEditingTitle(true);
 		setIsEditingDescription(false);
-		setTitle(e.target.value);
+		setTitle(title);
 	}
 
 	function descriptionMouseOver(e) {
 		setIsEditingTitle(false);
 		setIsEditingDescription(true);
-		setDescription(e.target.value);
+		setDescription(description);
 	}
 
 
@@ -106,21 +112,31 @@ function Todo(props) {
 		})
 	}
 
+	
+
 	function Button({ onClick, label }) {
 		return (
 			<button onClick={onClick}>{label}</button>
 		)
 	}
 
+
+
 	return (
 		<div>
 			{isEditingTitle ? (
 				<div>
-					<input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
+					<input type="text" value={title}
+						onChange={(e) => {
+							setTitle(e.target.value)
+						}} />
 					<Button onClick={saveTodo} label="Save" />
+					<br />
 				</div>
 			) : (
-				<h3 onClick={titleMouseOver}>{props.title}</h3>
+				<div>
+					<h4 onClick={titleMouseOver}>Title: {props.title}</h4>
+				</div>
 			)}
 			{isEditingDescription ? (
 				<div>
@@ -128,9 +144,12 @@ function Todo(props) {
 					<Button onClick={saveTodo} label="Save" />
 				</div>
 			) : (
-				<h3 onClick={descriptionMouseOver}>{props.description}</h3>
+				<div>
+					<h4 onClick={descriptionMouseOver}>Description: {props.description}</h4>
+				</div>
 			)}
-
+			<span></span>
+			<Button onClick={() => props.deleteTodo(props.id)} label="Delete" />
 
 		</div>
 	)

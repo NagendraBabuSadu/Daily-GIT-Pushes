@@ -83,11 +83,11 @@ function App() {
 	)
 }
 
-function Todo(props) {
+function Todo({ id, title: initialTitle, description: initialDescription, updateTodo, deleteTodo }) {
 	const [isEditingTitle, setIsEditingTitle] = useState(false);
 	const [isEditingDescription, setIsEditingDescription] = useState(false);
-	const [title, setTitle] = useState(props.title);
-	const [description, setDescription] = useState(props.description);
+	const [title, setTitle] = useState(initialTitle);
+	const [description, setDescription] = useState(initialDescription);
 
 	function titleMouseOver(e) {
 		setIsEditingTitle(true);
@@ -105,8 +105,8 @@ function Todo(props) {
 	function saveTodo() {
 		setIsEditingTitle(false);
 		setIsEditingDescription(false);
-		props.updateTodo(props.id, {
-			id: props.id,
+		updateTodo(id, {
+			id: id,
 			title,
 			description
 		})
@@ -135,7 +135,7 @@ function Todo(props) {
 				</div>
 			) : (
 				<div>
-					<h4 onClick={titleMouseOver}>Title: {props.title}</h4>
+					<h4 onClick={titleMouseOver}>Title: {title}</h4>
 				</div>
 			)}
 			{isEditingDescription ? (
@@ -145,11 +145,11 @@ function Todo(props) {
 				</div>
 			) : (
 				<div>
-					<h4 onClick={descriptionMouseOver}>Description: {props.description}</h4>
+					<h4 onClick={descriptionMouseOver}>Description: {description}</h4>
 				</div>
 			)}
 			<span></span>
-			<Button onClick={() => props.deleteTodo(props.id)} label="Delete" />
+			<Button onClick={() => deleteTodo(id)} label="Delete" />
 
 		</div>
 	)

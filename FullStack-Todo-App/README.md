@@ -27,7 +27,6 @@
 * Write code for `zod - safeParse`
 * If `zod - safeParse` is success, then Create a todo data in the mongoDb todos collection, else return the error message.
 
-
 ### Router - app.get("/todos")
 * Find all the todos and return in the JSON format.
 
@@ -39,10 +38,4 @@
 
 ## Step 2: Create a frontend folder for front-end application
 * Run `npm create vite@latest`in the terminal.
-* Give the Project details. 
-* 
-
-
-
-
-
+* Give the Project details.  

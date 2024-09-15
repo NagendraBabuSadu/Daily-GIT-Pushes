@@ -3,7 +3,7 @@ const express = require("express")
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const app = express();
-const { createTodo } = require("./types");
+const { createTodo, updateTodo } = require("./types");
 const { todo } = require("./db");
 const dotenv = require("dotenv");
 dotenv.config();
@@ -53,11 +53,12 @@ app.get("/todos", async function (req, res) {
 
 
 app.put("/completed", async function (req, res) {
-    const title = req.body.title;
-    const description = req.body.description;
-    const parsedPayload = createTodo.safeParse({
-        title, description
+    const id = req.body._id;
+    const parsedPayload = updateTodo.safeParse({
+        id
     });
+    console.log(parsedPayload.data);
+
 
     if (!parsedPayload.success) {
         res.status(411).json({
@@ -65,15 +66,13 @@ app.put("/completed", async function (req, res) {
         })
         return;
     }
-
-    console.log(req.body);
     // update a todo
     await todo.updateOne({
-        _id: req.body._id
+       id: req.body._id
     }, {
         completed: true
     })
-    .then(() => console.log("Updated successfully."))
+    .then(() => console.log(id, "Updated successfully."))
 
   
     res.status(200).json({

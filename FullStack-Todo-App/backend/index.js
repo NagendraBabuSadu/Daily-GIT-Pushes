@@ -11,6 +11,9 @@ const mongoUrl = process.env.MONGO_URL;
 const db = (mongoUrl);
 mongoose.connect(db);
 const PORT = 3000;
+const cors = require("cors");
+
+app.use(cors());
 
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -46,7 +49,7 @@ app.get("/todos", async function (req, res) {
 
     const todos = await todo.find({});
     res.status(200).json({
-        Todos: todos,
+        todos: todos,
         msg: "Todos returned successully."
     })
 })

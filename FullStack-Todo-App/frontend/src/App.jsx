@@ -5,6 +5,7 @@ import { Todos } from './components/todos'
 
 function App() {
   const [todos, setTodos] = useState([]);
+  const [id, setId] = useState(1);
 
   useEffect(() => {
     fetch("http://localhost:3000/todos")
@@ -15,10 +16,10 @@ function App() {
   }, [])
 
   return (
-    <>
+    <div>
       <CreateTodo />
-      <Todos todos={todos} />
-    </>
+      <Todos id={id} setId={setId} todos={todos} setTodos={setTodos}/>
+    </div>
   )
 }
 

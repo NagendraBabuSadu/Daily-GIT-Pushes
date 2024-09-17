@@ -35,7 +35,7 @@ app.post("/todo", async function (req, res) {
     }
     // Put it in mongoDb
     await todo.create({
-        title, description,
+        title, description
     })
 
     res.status(200).json({

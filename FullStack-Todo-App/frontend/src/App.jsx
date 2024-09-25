@@ -1,11 +1,14 @@
 import { useEffect, useState } from 'react'
 import { CreateTodo } from './components/createTodo'
 import { Todos } from './components/todos'
+import './app.css'
+import { SearchTodo } from './components/SearchTodo';
 
 
 function App() {
   const [todos, setTodos] = useState([]);
   const [id, setId] = useState(1);
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     fetch("http://localhost:3000/todos")
@@ -18,7 +21,10 @@ function App() {
   return (
     <div>
       <CreateTodo />
-      <Todos id={id} setId={setId} todos={todos} setTodos={setTodos}/>
+      <SearchTodo todos={todos} setTodos={setTodos} searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+      {!searchQuery && (
+        <Todos id={id} setId={setId} todos={todos} setTodos={setTodos}/>
+      )}
     </div>
   )
 }

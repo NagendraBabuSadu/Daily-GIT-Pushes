@@ -1,8 +1,9 @@
-# React + Vite
+# Frontend Todo App
+* Run `npm create vite@latest` to create a front end folder.
+* Update the _App.jsx_ file.
+* Add the _CreateTodo_ component. 
+* Add the _Todos_ component. 
+* Create a **components** folder and add new _CreateTodo.jsx_ and _Todos.jsx_ files in it. 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh

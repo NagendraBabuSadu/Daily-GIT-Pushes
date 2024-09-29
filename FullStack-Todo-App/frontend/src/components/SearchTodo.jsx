@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export function SearchTodo({ todos, setTodos, searchQuery, setSearchQuery }) {
+export function SearchTodo({ todos, searchQuery, setSearchQuery }) {
 
     function searchingTodo(e) {
         const value = e.target.value;

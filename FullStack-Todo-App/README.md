@@ -42,7 +42,4 @@
 * Go to the frontend directory in the terminal, and run `npm install`
 * To make it from scratch, remove all the css styles and also the default boiler plate code.
 * Let's create the **components** folder in the **src** folder.
-* In the components folder, add a new `createTodo.jsx` file.
-* 
-
 

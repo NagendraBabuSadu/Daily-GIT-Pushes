@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traffic Lights2</title>
+    <style>
+        .light {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            opacity: 0.1;
+        }
+
+        #red {
+            background-color: red;
+        }
+
+        #yellow {
+            background-color: yellow;
+        }
+
+        #green {
+            background-color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Traffic Lights</h1>
+    <p id="red" class="light"></p>
+    <p id="yellow" class="light"></p>
+    <p id="green" class="light"></p>
+
+    <button type="button" id="button" onclick="startTrafficLights()">Start Traffic Lights</button>
+
+    <script>
+        const redLight = document.getElementById("red");
+        const yellowLight = document.getElementById("yellow");
+        const greenLight = document.getElementById("green");
+
+        // Define the light durations in milliseconds
+        const redDuration = 5000;    // Red for 5 seconds
+        const yellowDuration = 2000; // Yellow for 2 seconds
+        const greenDuration = 10000; // Green for 10 seconds
+
+        let currentLight = "red"; // The initial light color
+        let intervalId;
+
+        // Function to update light colors
+        function updateLights() {
+            if (currentLight === "red") {
+                redLight.style.opacity = 1;
+                yellowLight.style.opacity = 0.1;
+                greenLight.style.opacity = 0.1;
+                console.log("Red Light");
+                currentLight = "yellow"; // Move to the next light
+                setTimeout(updateLights, redDuration);
+            } else if (currentLight === "yellow") {
+                redLight.style.opacity = 0.1;
+                yellowLight.style.opacity = 1;
+                greenLight.style.opacity = 0.1;
+                console.log("Yellow Light");
+                currentLight = "green"; // Move to the next light
+                setTimeout(updateLights, yellowDuration);
+            } else if (currentLight === "green") {
+                redLight.style.opacity = 0.1;
+                yellowLight.style.opacity = 0.1;
+                greenLight.style.opacity = 1;
+                console.log("Green Light");
+                currentLight = "red"; // Restart the cycle
+                setTimeout(updateLights, greenDuration);
+            }
+        }
+
+        // Function to start the traffic lights
+        function startTrafficLights() {
+            clearTimeout(intervalId); // Clear any previous intervals
+            updateLights(); // Start the cycle
+        }
+    </script>
+</body>
+
+</html>

@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Temperature from "./components/Temperature";
 import img1 from "./images/img1.jpg";
+import City from "./components/City";
 
 function App() {
   const [temp, setTemp] = useState(0);
-  const [city, setCity] = useState("");
+  const [city, setCity] = useState(null);
 
   const divStyle = {
     margin: "40px",
@@ -31,7 +32,10 @@ function App() {
         }}
       >
         <div>
-          <h1>Weather Report</h1>
+          <h1 style={{
+                color: "#e7ff42",
+                textShadow: "rgb(0 0 0) 9px 6px 6px"
+          }}>Weather Report</h1>
         </div>
         <div
           style={{
@@ -48,7 +52,7 @@ function App() {
                 textTransform: "uppercase",
                 fontSize: "3rem",
                 height: "200px",
-                textShadow: "rgb(69 200 141) 3px 1px 2px"                
+                textShadow: "rgb(38 38 38) 9px 6px 6px"
               }}
             >
               Build a Weather App in React
@@ -64,8 +68,8 @@ function App() {
               backgroundColor: "rgb(27 23 23 / 80%)", // Add a semi-transparent background for readability
             }}
           >
-            <Temperature temp={temp} setTemp={setTemp} />
-            <h3 style={{ fontSize: "2.2rem", marginLeft: "10px" }}>Delhi</h3>
+            <Temperature temp={temp} />
+            <City city={city} setCity={setCity} temp={temp} setTemp={setTemp} />
           </div>
         </div>
       </div>

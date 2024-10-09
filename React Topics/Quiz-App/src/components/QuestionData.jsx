@@ -31,7 +31,8 @@ function QuestionData() {
           "https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=multiple"
         );
         const data = await response.json();
-        localStorage.setItem("questions", data);
+        localStorage.setItem("questions", JSON.stringify(data));
+        console.log(data)
         setQuestions(data);
       }
     }

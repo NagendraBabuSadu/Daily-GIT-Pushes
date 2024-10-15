@@ -1,48 +1,66 @@
-import { useState, useEffect } from "react";
-
+import { useEffect, useState } from "react";
 
 function App() {
-  const [todos, setTodos] = useState([]);
+  const { todos, error, loading } = useTodos();
 
+  if (loading) {
+    return (
+      <div>
+        Loading...
+      </div>
+    )
+  }
 
-  useEffect(() => {
-    getTodos();
-
-  }, []);
-  const getTodos = async () => {
-    const response = await fetch("https://dummyjson.com/todos");
-    const data = await response.json();
-    const result = await data.todos;
-    setTodos(result);
-
+  if (error) {
+    return (
+      <div>
+        Error: {error.message}
+      </div>
+    )
   }
 
   return (
-    <div key={todos.id}>
-      <h1>Todos</h1>
+    <div>
       {todos.map((todo) => {
-        console.log(todo)
-        return ( // 1 no return statement first time here
-          <Todo
-            key={todo.id}
-            title={todo.todo}
-          />
-        )
+        return (
+          <div key={todo.id}>
+            <h2>{todo.todo}</h2>
+          </div>
+        );
       })}
     </div>
-  )
-
-
+  );
 }
 
-function Todo({ title }) {
-  return (
-    <div >
-      <h2>{title}</h2>
-    </div>
-  )
-}
+function useTodos() {
+  const [todos, setTodos] = useState([]);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-
+  useEffect(() => {
+    const fetchTodos = async () => {
+      try {
+        const response = await fetch("https://dummyjson.com/todos");
+        setTimeout(async () => {
+          
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }    
+          const data = await response.json();
+          console.log(data);
+          setTodos(data.todos);
+        }, 2000);
+          
+        } catch (error) {
+        setError(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchTodos();
+  }, []);
+  
+    return { todos, error, loading }; // important to return the value
+  }
 
 export default App;

@@ -19,14 +19,13 @@ export default function AddMovie({ movies, setMovies }) {
       body: JSON.stringify(addMovie),
     }).then(async function (response) {
       const data = await response.json();
-      console.log("hi")
       console.log(data);
-      if(data.movie) {
-
-          setMovies([...movies, data.movie]);
-        }else {
-            console.log(data.msg);
-        }
+      if (data.movie) {
+        setMovies((prevMovies) => [...prevMovies, data.movie]);
+        setAddMovie({title: "", year: "", rate: "", image: ""});
+      } else {
+        console.log(data.msg);
+      }
     });
   }
 
@@ -37,21 +36,28 @@ export default function AddMovie({ movies, setMovies }) {
         type="text"
         placeholder="Title"
         value={addMovie.title}
-        onChange={(e) => setAddMovie({ ...addMovie, title: e.target.value })}
+        // handleChange(e)={this.AddMovie({[e.target.title]: e.target.value})}
+        onChange={(e) => setAddMovie({...addMovie, title: e.target.value})}
       />
       <br />
       <input
         type="number"
         placeholder="Year"
         value={addMovie.year}
-        onChange={(e) => setAddMovie({ ...addMovie, year: parseInt(e.target.value) })}
+        onChange={(e) => {
+          const yearValue = parseInt(e.target.value, 10);
+          setAddMovie({ ...addMovie, year: isNaN(yearValue) ? "" : yearValue });
+        }}
       />
       <br />
       <input
         type="number"
         placeholder="Rate"
         value={addMovie.rate}
-        onChange={(e) => setAddMovie({ ...addMovie, rate: parseInt(e.target.value) })}
+        onChange={(e) => {
+          const rateValue = parseFloat(e.target.value);
+          setAddMovie({ ...addMovie, rate: isNaN(rateValue) ? "" : rateValue });
+        }}
       />
       <br />
       <input

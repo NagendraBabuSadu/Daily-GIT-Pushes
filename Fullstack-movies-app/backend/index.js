@@ -56,7 +56,6 @@ app.get("/movies", async function (req, res) {
     try {
 
         const movies = await movie.find({});
-        console.log(movies)
         res.status(200).json({
             movies: movies,
             msg: "Movies returned successfully."
@@ -70,12 +69,12 @@ app.get("/movies", async function (req, res) {
 })
 
 
-app.put("/movie/:name", async function (req, res) {
+app.put("/movies/:name", async function (req, res) {
     const name = req.params.name;
-    const {title, year, rate} = req.body;
+    const { title, year, rate } = req.body;
 
     const parsedPayload = updateMovie.safeParse({
-        title : req.body.title,
+        title: req.body.title,
         year: req.body.year,
         rate: req.body.rate
     })
@@ -100,10 +99,9 @@ app.put("/movie/:name", async function (req, res) {
             return;
         }
 
-
         const result = await movie.updateOne(
             { title: name },
-            { $set: {title, year, rate} }
+            { $set: { title, year, rate } }
         );
 
         if (result.nModified === 0) {
@@ -122,6 +120,39 @@ app.put("/movie/:name", async function (req, res) {
             error: error.message
         })
     }
+})
+
+app.delete("/movies/:name", async function (req, res) {
+    const name = req.params.name.trim();
+
+    try {
+        const existingMovie = await movie.findOne({
+            title: name
+        }, '_id title year');
+        console.log(existingMovie);
+        if (!existingMovie) {
+            res.status(404).json({
+                msg: "Movie not found"
+            });
+            return;
+        }
+
+        console.log(existingMovie._id);
+
+        await movie.deleteOne({ _id: existingMovie._id });
+
+
+        res.status(200).json({
+            msg: "Movie deleted successfully",
+            movieDetails: {
+                title: existingMovie.title,
+                year: existingMovie.year
+            }
+        })
+    } catch (error) {
+        console.log(error)
+    }
+
 })
 
 app.listen(PORT, console.log("Server is running at port 3000"))

@@ -1,31 +1,31 @@
 import { useEffect, useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
-import AddMovie from './components/AddMovie';
 import Movies from './components/Movies';
 
 
 function App() {
-
-  const [movies, setMovies] = useState([])
-
-  useEffect(() => {
-    fetch("http://localhost:3000/movies")
-      .then(async function(response) {
-        const data = await response.json();
-        console.log(data.movies)
-        setMovies(data.movies)
-      })
-    
-    }, [])
-
+  
+  const [movies, setMovies] = useMovies();
 
   return(
-    <div>
-      <AddMovie movies={movies} setMovies={setMovies} />
+    <div> 
       <Movies movies={movies} setMovies={setMovies} />
     </div>
   )
+}
+
+function useMovies() {
+  const [movies, setMovies] = useState([]);
+  useEffect(function () {
+    fetch("http://localhost:3000/movies") 
+      .then(async function (response) {
+        const data = await response.json();
+        setMovies(data.movies);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }, []);
+  return  [movies, setMovies] ;
 }
 export default App

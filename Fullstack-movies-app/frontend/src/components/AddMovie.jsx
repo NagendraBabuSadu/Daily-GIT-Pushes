@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react";
-import joker from "../images/joker.webp";
 
-export default function AddMovie({ movies, setMovies }) {
+export default function AddMovie({ movies, setMovies,   }) {
   const [addMovie, setAddMovie] = useState({
     title: "",
     year: "",
     rate: "",
     image: "",
   });
-  const [showImage, setShowImage] = useState(false);
+
 
   function movieAdded() {
     fetch("http://localhost:3000/movies", {
@@ -38,6 +37,7 @@ export default function AddMovie({ movies, setMovies }) {
         value={addMovie.title}
         // handleChange(e)={this.AddMovie({[e.target.title]: e.target.value})}
         onChange={(e) => setAddMovie({...addMovie, title: e.target.value})}
+         
       />
       <br />
       <input
@@ -48,6 +48,8 @@ export default function AddMovie({ movies, setMovies }) {
           const yearValue = parseInt(e.target.value, 10);
           setAddMovie({ ...addMovie, year: isNaN(yearValue) ? "" : yearValue });
         }}
+         
+
       />
       <br />
       <input
@@ -58,6 +60,8 @@ export default function AddMovie({ movies, setMovies }) {
           const rateValue = parseFloat(e.target.value);
           setAddMovie({ ...addMovie, rate: isNaN(rateValue) ? "" : rateValue });
         }}
+         
+
       />
       <br />
       <input
@@ -65,19 +69,12 @@ export default function AddMovie({ movies, setMovies }) {
         placeholder="image"
         value={addMovie.image}
         onChange={(e) => setAddMovie({ ...addMovie, image: e.target.value })}
+         
       />
+
       <br />
-      {showImage ? (
-        <img
-          style={{
-            width: "200px",
-            height: "200px",
-          }}
-          srcSet={joker}
-          alt="joker"
-        />
-      ) : null}
-      <button onClick={movieAdded}>Add Movie</button>
+     
+      <button onClick={movieAdded}  >Add Movie</button>
     </div>
   );
 }

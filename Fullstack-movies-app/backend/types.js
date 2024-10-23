@@ -10,11 +10,10 @@ const createMovie = zod.object(
 )
 
 const updateMovie = zod.object({
-    id: zod.number().optional(),
     title: zod.string().optional(),
-    year: zod.number().optional(),
+    year: zod.string().optional(),
     image: zod.string().optional(),
-    rate: zod.number().optional()
+    rate: zod.string().optional()
 })
 
 module.exports = {

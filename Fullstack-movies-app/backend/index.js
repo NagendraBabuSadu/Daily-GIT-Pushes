@@ -70,28 +70,29 @@ app.get("/movies", async function (req, res) {
 
 
 app.put("/movies/:name", async function (req, res) {
-    const name = req.params.name;
-    const { title, year, rate } = req.body;
+    const name = req.params.name.trim();
+    const { title, year, rate, image } = req.body;
 
+    // zod validation - input validation
     const parsedPayload = updateMovie.safeParse({
-        title: req.body.title,
-        year: req.body.year,
-        rate: req.body.rate
-    })
-
-    console.log(parsedPayload.data);
+        title,
+        year,
+        rate,
+        image
+    });
+    console.log(parsedPayload, "parsedPayload");
 
     if (!parsedPayload.success) {
         res.status(411).json({
             msg: "You sent wrong inputs"
-        })
-        return
+        });
+        return;
     }
 
-
+    // database operation
     try {
-
         const existingMovie = await movie.findOne({ title: name });
+        console.log(existingMovie, "existingMovie");
         if (!existingMovie) {
             res.status(404).json({
                 msg: "Movie not found"
@@ -99,28 +100,31 @@ app.put("/movies/:name", async function (req, res) {
             return;
         }
 
+        
         const result = await movie.updateOne(
             { title: name },
-            { $set: { title, year, rate } }
+            { $set: {title, year, rate, image} }
         );
+        console.log(result, "result");
 
         if (result.nModified === 0) {
             res.status(404).json({
                 msg: "Movie not found"
-            })
+            });
             return;
         }
 
-        res.status(200).json({
+        res.status(200).json({            
             msg: "Movie updated successfully"
-        })
+        });
     } catch (error) {
         res.status(500).json({
             msg: "Internal server error",
             error: error.message
-        })
+        });
     }
-})
+});
+
 
 app.delete("/movies/:name", async function (req, res) {
     const name = req.params.name.trim();
@@ -129,7 +133,7 @@ app.delete("/movies/:name", async function (req, res) {
         const existingMovie = await movie.findOne({
             title: name
         }, '_id title year');
-        console.log(existingMovie);
+        // console.log(existingMovie);
         if (!existingMovie) {
             res.status(404).json({
                 msg: "Movie not found"

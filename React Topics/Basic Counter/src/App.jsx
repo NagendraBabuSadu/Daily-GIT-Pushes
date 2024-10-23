@@ -1,31 +1,19 @@
-// state, components
-
-import { useState } from 'react';
-import './App.css'
+import React, { useState, useRef } from "react";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [incomeTax, setIncomeTax] = useState();
+  const divRef = useRef();
+
+  setTimeout(() => {
+    divRef.current.innerHTML = 19;
+  }, 3000);
 
   return (
     <div>
-      <CustomButton count={count} setCount={setCount}></CustomButton>
-      <CustomButton count={count + 1} setCount={setCount}></CustomButton>
-      <CustomButton count={count - 1} setCount={setCount}></CustomButton> // this doesn't work, as it is always behind the original count value
+      hi there,, your current income tax returns are{" "}
+      <div ref={divRef}>{incomeTax}</div>{" "}
     </div>
-  )
+  );
 }
 
-function CustomButton(props) {
-
-  function onClickHandler() {
-    console.log(props.count)
-    props.setCount(props.count + 1)
-  }
-  return (
-    <button onClick={onClickHandler}>Count {props.count}</button>
-  )
-}
-
-
-
-export default App
+export default App;

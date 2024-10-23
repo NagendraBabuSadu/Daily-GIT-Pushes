@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function EditMovie({ movie, setMovies, onClose }) {
   const [updatedMovie, setUpdatedMovie] = useState({
@@ -8,18 +8,52 @@ export default function EditMovie({ movie, setMovies, onClose }) {
     rate: movie.rate,
   });
 
-    function handleChange(event) {
-        const {name,  value} = event.target;
-        setUpdatedMovie({...updatedMovie, [name]: value});
+  useEffect(() => {
+    if (movie) {
+      setUpdatedMovie({
+        title: movie.title,
+        year: movie.year,
+        image: movie.image,
+        rate: movie.rate,
+      });
     }
+  }, [movie]);
+
+  function handleChange(event) {
+    const { name, value } = event.target;
+    // setUpdatedMovie({ ...updatedMovie, [name]: value });
+    setUpdatedMovie((prevState) => {
+      const updatedMovieCopy = {...prevState};
+      updatedMovieCopy[name] = value;
+      return updatedMovieCopy;
+    })
+  }
+  useEffect(() => {
+    console.log("updatedMovie", updatedMovie);
+  }, [updatedMovie]);
+
+  function validateMovie(movie) {
+    const {title, year, rate, image} = movie;
+    if( title === null) {
+      return false;
+    } 
+    return true;
+  }
+
+  
   function saveMovie() {
+    if(!validateMovie(updatedMovie)){
+      console.log("Invalid movie data");
+      return;
+    }
+
     const encodeMovieName = encodeURIComponent(movie.title);
     fetch(`http://localhost:3000/movies/${encodeMovieName}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(updatedMovie)
+      body: JSON.stringify(updatedMovie),
     })
       .then(async function (response) {
         if (!response.ok) {
@@ -31,8 +65,8 @@ export default function EditMovie({ movie, setMovies, onClose }) {
         if (data.msg === "Movie updated successfully") {
           setMovies((prevMovies) => {
             return prevMovies.map((prevMovie) => {
-              if (prevMovie.title === movie.title || prevMovie.year === movie.year) {
-                return {...prevMovie, ...updatedMovie}
+              if (prevMovie._id === movie._id) {
+                return { ...prevMovie, ...updatedMovie };
               }
               return prevMovie;
             });
@@ -46,36 +80,44 @@ export default function EditMovie({ movie, setMovies, onClose }) {
       });
   }
   return (
-
     <div>
-        <h1>Edit Movie</h1>
-        <input 
+      {movie ? (
+        <div>
+          <h1>Edit Movie</h1>
+          <input
             type="text"
             name="title"
             value={updatedMovie.title}
             onChange={handleChange}
-            /> <br />
-        <input 
+          />{" "}
+          <br />
+          <input
             type="number"
             name="year"
             value={updatedMovie.year}
             onChange={handleChange}
-            /> <br />
-        <input 
+          />{" "}
+          <br />
+          <input
             type="number"
             name="rate"
             value={updatedMovie.rate}
             onChange={handleChange}
-            /> <br />
-        <input 
+          />{" "}
+          <br />
+          <input
             type="text"
             name="image"
             value={updatedMovie.image}
             onChange={handleChange}
-            /> <br />
-    <button onClick={saveMovie}>Save</button>
-    <button onClick={onClose}>Close</button>
+          />{" "}
+          <br />
+          <button onClick={saveMovie}>Save</button>
+          <button onClick={onClose}>Close</button>
+        </div>
+      ) : (
+        <p>Invalid movie data</p>
+      )}
     </div>
-
-  ) 
+  );
 }

@@ -1,13 +1,12 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
-export default function AddMovie({ movies, setMovies,   }) {
+export default function AddMovie({ movies, setMovies }) {
   const [addMovie, setAddMovie] = useState({
     title: "",
     year: "",
     rate: "",
     image: "",
   });
-
 
   function movieAdded() {
     fetch("http://localhost:3000/movies", {
@@ -20,8 +19,9 @@ export default function AddMovie({ movies, setMovies,   }) {
       const data = await response.json();
       console.log(data);
       if (data.movie) {
-        setMovies((prevMovies) => [...prevMovies, data.movie]);
-        setAddMovie({title: "", year: "", rate: "", image: ""});
+        setMovies((prevMovies) => [data.movie, ...prevMovies]);
+        // Clear the input values by resetting the state
+        setAddMovie({ title: "", year: "", rate: "", image: "" });
       } else {
         console.log(data.msg);
       }
@@ -35,9 +35,9 @@ export default function AddMovie({ movies, setMovies,   }) {
         type="text"
         placeholder="Title"
         value={addMovie.title}
-        // handleChange(e)={this.AddMovie({[e.target.title]: e.target.value})}
-        onChange={(e) => setAddMovie({...addMovie, title: e.target.value})}
-         
+        onChange={(e) =>
+          setAddMovie({ ...addMovie, title: e.target.value })
+        }
       />
       <br />
       <input
@@ -46,10 +46,11 @@ export default function AddMovie({ movies, setMovies,   }) {
         value={addMovie.year}
         onChange={(e) => {
           const yearValue = parseInt(e.target.value, 10);
-          setAddMovie({ ...addMovie, year: isNaN(yearValue) ? "" : yearValue });
+          setAddMovie({
+            ...addMovie,
+            year: isNaN(yearValue) ? "" : yearValue,
+          });
         }}
-         
-
       />
       <br />
       <input
@@ -58,23 +59,23 @@ export default function AddMovie({ movies, setMovies,   }) {
         value={addMovie.rate}
         onChange={(e) => {
           const rateValue = parseFloat(e.target.value);
-          setAddMovie({ ...addMovie, rate: isNaN(rateValue) ? "" : rateValue });
+          setAddMovie({
+            ...addMovie,
+            rate: isNaN(rateValue) ? "" : rateValue,
+          });
         }}
-         
-
       />
       <br />
       <input
         type="text"
-        placeholder="image"
+        placeholder="Image URL"
         value={addMovie.image}
-        onChange={(e) => setAddMovie({ ...addMovie, image: e.target.value })}
-         
+        onChange={(e) =>
+          setAddMovie({ ...addMovie, image: e.target.value })
+        }
       />
-
       <br />
-     
-      <button onClick={movieAdded}  >Add Movie</button>
+      <button onClick={movieAdded}>Add Movie</button>
     </div>
   );
 }

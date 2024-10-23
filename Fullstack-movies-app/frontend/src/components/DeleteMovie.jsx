@@ -18,7 +18,7 @@ export default function DeleteMovie({ movieName, _id, setMovies }) {
         if (data.msg === "Movie deleted successfully") {
           setMovies((prevMovies) =>
             prevMovies.filter(
-              (movie) => movie.title !== movieName || movie._id !== _id
+              (movie) =>  movie._id !== _id
             )
           );
         } else {

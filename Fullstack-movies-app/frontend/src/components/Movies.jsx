@@ -17,12 +17,11 @@ export default function Movies({ movies, setMovies }) {
   return (
     <div>
       <h1>Movies</h1>
-      {!editingMovie && (
-        <AddMovie movies={movies} setMovies={setMovies}  />
-      )}
-      {editingMovie && (
+      {!editingMovie && <AddMovie movies={movies} setMovies={setMovies} />}
+      {movies && movies.length >= 0 && editingMovie && (
         <EditMovie
           movie={editingMovie}
+          movies={movies}
           setMovies={setMovies}
           onClose={handleEditClose}
         />
@@ -47,6 +46,7 @@ export default function Movies({ movies, setMovies }) {
               <h3>{movie.title}</h3>
               <h4>{movie.year}</h4>
               <h4>{movie.rate}</h4>
+              <h4>{movie.image}</h4>
               <button onClick={() => handleEditClick(movie)}>Edit</button>
 
               <DeleteMovie
@@ -60,7 +60,6 @@ export default function Movies({ movies, setMovies }) {
       ) : (
         <p>No movies</p>
       )}
-      
     </div>
   );
 }

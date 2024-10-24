@@ -52,7 +52,7 @@ function Buttons() {
         Decrement
       </button>
     </div>
-  );
+  )
 }
 
 function TextPortion() {

@@ -1,0 +1,107 @@
+[
+  {
+    "question": "What is the capital of France?",
+    "options": ["Paris", "London", "Berlin", "Madrid"],
+    "answer": "Paris"
+  },
+  {
+    "question": "What is the largest planet in our solar system?",
+    "options": ["Earth", "Jupiter", "Saturn", "Mars"],
+    "answer": "Jupiter"
+  },
+  {
+    "question": "Who wrote 'Romeo and Juliet'?",
+    "options": ["William Shakespeare", "Charles Dickens", "Jane Austen", "Mark Twain"],
+    "answer": "William Shakespeare"
+  },
+  {
+    "question": "What is the smallest country in the world?",
+    "options": ["Monaco", "San Marino", "Vatican City", "Liechtenstein"],
+    "answer": "Vatican City"
+  },
+  {
+    "question": "What is the longest river in the world?",
+    "options": ["Amazon", "Nile", "Yangtze", "Mississippi"],
+    "answer": "Amazon"
+  },
+  {
+    "question": "Who painted the 'Mona Lisa'?",
+    "options": ["Vincent van Gogh", "Pablo Picasso", "Leonardo da Vinci", "Claude Monet"],
+    "answer": "Leonardo da Vinci"
+  },
+  {
+    "question": "Which element has the chemical symbol 'O'?",
+    "options": ["Oxygen", "Osmium", "Ozone", "Oganesson"],
+    "answer": "Oxygen"
+  },
+  {
+    "question": "What is the capital of Japan?",
+    "options": ["Seoul", "Tokyo", "Beijing", "Osaka"],
+    "answer": "Tokyo"
+  },
+  {
+    "question": "What is the main ingredient in guacamole?",
+    "options": ["Tomato", "Avocado", "Onion", "Pepper"],
+    "answer": "Avocado"
+  },
+  {
+    "question": "Which animal is known as the king of the jungle?",
+    "options": ["Elephant", "Lion", "Tiger", "Giraffe"],
+    "answer": "Lion"
+  },
+  {
+    "question": "What is the largest ocean on Earth?",
+    "options": ["Atlantic Ocean", "Indian Ocean", "Arctic Ocean", "Pacific Ocean"],
+    "answer": "Pacific Ocean"
+  },
+  {
+    "question": "Which planet is known as the Red Planet?",
+    "options": ["Mars", "Venus", "Saturn", "Earth"],
+    "answer": "Mars"
+  },
+  {
+    "question": "How many continents are there?",
+    "options": ["5", "6", "7", "8"],
+    "answer": "7"
+  },
+  {
+    "question": "What is the hardest natural substance on Earth?",
+    "options": ["Gold", "Diamond", "Iron", "Platinum"],
+    "answer": "Diamond"
+  },
+  {
+    "question": "What is the tallest mountain in the world?",
+    "options": ["Mount Kilimanjaro", "Mount Everest", "K2", "Mount Fuji"],
+    "answer": "Mount Everest"
+  },
+  {
+    "question": "Who invented the telephone?",
+    "options": ["Alexander Graham Bell", "Thomas Edison", "Nikola Tesla", "Benjamin Franklin"],
+    "answer": "Alexander Graham Bell"
+  },
+  {
+    "question": "What is the capital of Australia?",
+    "options": ["Sydney", "Melbourne", "Canberra", "Brisbane"],
+    "answer": "Canberra"
+  },
+  {
+    "question": "What is the largest desert in the world?",
+    "options": ["Sahara Desert", "Arabian Desert", "Gobi Desert", "Antarctic Desert"],
+    "answer": "Antarctic Desert"
+  },
+  {
+    "question": "In which year did the Titanic sink?",
+    "options": ["1900", "1912", "1923", "1930"],
+    "answer": "1912"
+  },
+  {
+    "question": "Which country is known as the Land of the Rising Sun?",
+    "options": ["China", "India", "Japan", "South Korea"],
+    "answer": "Japan"
+  },
+  {
+    "question": "What is the capital of Canada?",
+    "options": ["Toronto", "Ottawa", "Vancouver", "Montreal"],
+    "answer": "Ottawa"
+  }
+]

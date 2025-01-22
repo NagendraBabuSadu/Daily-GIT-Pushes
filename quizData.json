@@ -19,24 +19,6 @@
     "options": ["Monaco", "San Marino", "Vatican City", "Liechtenstein"],
     "answer": "Vatican City"
   },
-  {
-    "question": "What is the longest river in the world?",
-    "options": ["Amazon", "Nile", "Yangtze", "Mississippi"],
-    "answer": "Amazon"
-  },
-  {
-    "question": "Who painted the 'Mona Lisa'?",
-    "options": ["Vincent van Gogh", "Pablo Picasso", "Leonardo da Vinci", "Claude Monet"],
-    "answer": "Leonardo da Vinci"
-  },
-  {
-    "question": "Which element has the chemical symbol 'O'?",
-    "options": ["Oxygen", "Osmium", "Ozone", "Oganesson"],
-    "answer": "Oxygen"
-  },
-  {
-    "question": "What is the capital of Japan?",
-    "options": ["Seoul", "Tokyo", "Beijing", "Osaka"],
-    "answer": "Tokyo"
-  }
+
+
 ]

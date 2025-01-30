@@ -1,0 +1,176 @@
+:root {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-size: 10px;
+}
+
+button {
+  width: 8%;
+  height: 4rem;
+  border-radius: 4px;
+  font-size: 2rem;
+  margin: 10px;
+  color: white;
+  font-weight: 700;
+  background-color: navy;
+}
+
+.leftNavbarDiv {
+  width: 250px;
+  height: 100vh;
+  background-color: "ebebeb";
+  position: fixed;
+}
+
+li {
+  color: black; /* default color */
+}
+
+li:hover {
+  color: white; /* color on hover */
+  background-color: black; /* background on hover */
+  border-radius: 5px;
+  transform: scale(1.2);
+}
+.loginComponentDiv {
+  display: flex;
+  flex-direction: column; /* Stack the elements vertically */
+  height: 96vh; /* Full viewport height */
+}
+
+.pageDiv {
+  display: flex; /* Creates a flex container for left and right divs */
+  flex-grow: 1; /* Ensures it takes up the remaining height */
+  width: 100%; /* Ensures it takes up the full width */
+  flex-direction: row;
+}
+
+.loginComponentLeftDiv {
+  width: 30%; /* Left div takes 30% of the width */
+  /* background-color: #3498db; Optional background for left div */
+}
+
+.loginComponentRightDiv {
+  width: 70%; /* Right div now takes the remaining 70% */
+  /* background-color: #e74c3c;  */
+  margin-left: 300px;
+  height: fit-content;
+  margin-top: 100px;
+  font-size: 2rem;
+}
+
+.bgImageDiv img {
+  width: 90%; /* Ensures image fits the container */
+  height: auto; /* Keeps image's aspect ratio */
+}
+
+.loginPageDivHeadingText {
+  /* background-color: aliceblue; */
+  display: grid;
+  margin-bottom: 2rem;
+  font-size: 3rem;
+}
+
+.loginEmailAddress {
+  /* background-color: aqua; */
+  /* background-color: blueviolet; */
+  margin-top: 2rem;
+  padding-top: 12px;
+  font-weight: 700;
+}
+
+.loginEmailAddress input {
+  height: 4em;
+  width: 70%;
+  border-radius: 2px;
+  font-size: 2.1rem;
+  padding: 18px 10px;
+  height: fit-content;
+  color: rgb(96, 96, 99);
+}
+
+.buttonPlusText {
+  margin-top: 20px;
+  /* background-color: aqua; */
+  /* display: grid; */
+  width: 610px;
+  font-size: 19px;
+  margin-top: 4rem;
+  padding-top: 20px;
+}
+
+
+
+.buttonPlusText button:hover {
+  background-color: green;
+  transition: all ease 200ms;
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.resumePage {
+  margin-left: 300px;
+  overflow: hidden;
+  background-color: rgb(181, 192, 192);
+  height: 98vh;
+  font-size: 1.8rem;
+  max-width: 82%;
+  /* position: relative; */
+}
+
+.personalDetails {
+  background-color: chocolate;
+  height: 20vh;
+  display: flex;
+  max-width: 98%;
+  margin-left: 15px;  
+}
+
+.uploadImage{
+  display: grid;
+}
+
+.personalDetails input {
+  height: "100px";
+  background-color: chartreuse;
+  height: 40px;
+  font-size: large;
+  padding-left: 13px;
+}
+
+.uploadImage input{
+  background-color: blue;
+  
+}
+
+.firstNameLastNameGenderDob {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  width: 1000vw;
+  padding: 2px auto;
+  margin-left: 30px;
+}
+
+.firstNameDiv,
+.lastNameDiv,
+.genderDiv,
+.dateOfBirthDiv {
+  display: grid;
+}
+
+.genderDiv select {
+  width: "100px";
+  height: "100px";
+  background-color: chartreuse;
+  height: 40px;
+  font-size: large;
+  padding-left: 13px;
+}
+
+.resumePage button:hover{
+  background-color: green;
+  transition: all ease 400ms;
+  transform: scale(1.1);
+  cursor: pointer;
+}

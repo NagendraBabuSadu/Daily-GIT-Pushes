@@ -1,0 +1,22 @@
+[
+  {
+    "question": "What is the capital of France?",
+    "options": ["Paris", "London", "Berlin", "Madrid"],
+    "answer": "Paris"
+  },
+  {
+    "question": "What is the largest planet in our solar system?",
+    "options": ["Earth", "Jupiter", "Saturn", "Mars"],
+    "answer": "Jupiter"
+  },
+  {
+    "question": "Who wrote 'Romeo and Juliet'?",
+    "options": ["William Shakespeare", "Charles Dickens", "Jane Austen", "Mark Twain"],
+    "answer": "William Shakespeare"
+  },
+  {
+    "question": "What is the smallest country in the world?",
+    "options": ["Monaco", "San Marino", "Vatican City", "Liechtenstein"],
+    "answer": "Vatican City"
+  },
+]

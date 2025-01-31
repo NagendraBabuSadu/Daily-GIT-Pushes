@@ -1,20 +1,16 @@
-import { useEffect, useRef, useState } from "react";
+import {  useState } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { setUserDispatch } from "../slices/resumeSlice";
+import UserProfileImage from "../components/UserImageComponent";
 
 export default function ResumePage() {
     const [user, setUser] = useState("");
-
-    //   const [file, setFile] = useState();
-
+    const [imageFile, setImageFile] = useState("");
     const dispatch = useDispatch();
-
     const userSelector = useSelector((state) => state.resumeProfile.user);
-
-    // console.log("user ----", userSelector);
-
     const handleUser = (event) => {
+
         const { name, value } = event.target;
         setUser((prev) => ({
             ...prev,
@@ -22,99 +18,16 @@ export default function ResumePage() {
         }));
     };
 
-    useEffect(() => {
-        const handler = setTimeout(() => {
-            // console.log('----> user', user);
-        }, 2000);
-
-        return () => {
-            clearTimeout(handler);
-        };
-    }, [user]);
-
-    const savePersonDetails = () => {
-        dispatch(setUserDispatch(user));
-        // console.log("save user details")
+    const savePersonDetails = () => {        
+        dispatch(setUserDispatch({ ...user, image: imageFile }));
     };
-
-    function FileUpload() {
-        const fileInputRef = useRef(null);
-        const [image, setImage] = useState(null);
-        const handlePhoto = (event) => {
-            console.log(event.target.files);
-            const uploadedImageUrl = setImage(URL.createObjectURL(event.target.files[0]));
-            console.log("uploadedImageUrl", URL.createObjectURL(event.target.files[0]));
-        };
-
-        return (
-            <div>
-                {!image ? (
-                    <input
-                        type="file"
-                        name="candidataPhoto"
-                        id="candidataPhoto"
-                        ref={fileInputRef}
-                        onChange={handlePhoto}
-                        style={{
-                            display: "none",
-                        }}
-                    />
-                ) : null}
-
-                <button
-                    onClick={() => fileInputRef.current.click()}
-                    style={{
-                        padding: "10px 20px",
-                        backgroundColor: "#007BFF",
-                        color: "white",
-                        borderRadius: "5px",
-                        border: "none",
-                        cursor: "pointer",
-                        fontSize: "16px",
-                        width: "100px",
-                        height: "fit-content",
-                    }}
-                >
-                    Upload Photo
-                </button>
-                {image ? (
-                    <img
-                        src={image}
-                        alt="Uploaded Preview"
-                        style={{
-                            width: "80px",
-                            height: "80px",
-                            objectFit: "cover",
-                            backgroundColor: "white",
-                            borderRadius: "10px",
-                            padding: "10px 10px",
-                            marginLeft: "10px"
-
-                        }}
-                    />
-                ) : (
-                    <img
-                        style={{
-                            width: "80px",
-                            height: "80px",
-                            objectFit: "cover",
-                            backgroundColor: "white",
-                            borderRadius: "10px",
-                            padding: "10px 10px",
-                            marginLeft: "10px"
-                        }}
-                    />
-                )}
-            </div>
-        );
-    }
 
     return (
         <div className="resumePage">
-            <h2>Your Resume</h2>
+            {/* <p>Your Resume</p> */}
             <div className="personalDetails">
                 <div className="uploadImage">
-                    <FileUpload />
+                    <UserProfileImage imageFile={imageFile}  setImageFile={setImageFile}/>
                 </div>
                 <div className="firstNameLastNameGenderDob">
                     <div className="firstNameDiv">
@@ -153,27 +66,128 @@ export default function ResumePage() {
                     </div>
                     <div className="dateOfBirthDiv">
                         <label htmlFor="dateOfBirth">Date of Birth</label>
+
+
                         <input
                             type="date"
+                            // ref={dobRef}
                             name="dateOfBirth"
                             id="dateOfBirth"
-                            value={user.dob }
+                            value={user.dob}
                             onChange={handleUser}
-                         
                         />
+
                     </div>
                 </div>
             </div>
-            <button onClick={savePersonDetails}>Save</button>
-            {userSelector ? (
-                <div style={{ marginTop: "100px" }}>
-                    <p>
-                        Redux First & Last Names: {userSelector?.firstName},{" "}
-                        {userSelector?.lastName}, gender is {userSelector?.gender} and birth
-                        date is {userSelector?.dateOfBirth}{" "}
-                    </p>
+            <div className="officialDetails">
+                {/* Official Details */}
+                <div className="emailDiv">
+                    <label htmlFor="email">Email</label>
+                    <input type="email" />
                 </div>
-            ) : null}
+                <div className="mobileNumberDiv">
+                    <label htmlFor="mobileNumber">Mobile Number</label>
+                    <div>
+                        <select name="" id=""  className="selctOption" >
+                            <option value="">+91</option>
+                        </select>
+                        <input type="number" name="" id="" className="mobileNumberInput"/>
+                    </div>
+                </div>
+                <div className="eduDiv">
+                    <label htmlFor="">Education Completion Date</label>
+                    <input type="date" name="" id="" />
+                </div>
+                <div className="projectDiv">
+                    <label htmlFor="">Project</label>
+                    <div>
+                        <input type="text" name="" id="" className="projectInput"/>
+                        <select name="" id="" className="selctOption">
+                            <option value=""></option>
+                        </select>
+                    </div>
+                </div>
+                <div className="jobRoleDiv">
+                    <label htmlFor="">Job Role</label>
+                    <div>
+                        <input type="text" name="" id="" className="jobRoleInput"/>
+                        <select name="" id="" className="selctOption">
+                            <option value=""></option>
+                        </select>
+                    </div>
+                </div>
+                <div className="expDiv">
+                    <div className="totalExpDiv">
+                        <label htmlFor="">
+                            Total Experience
+                        </label>
+                        <input type="text" />
+                    </div>
+                    <div className="relExpDiv">
+                        <label htmlFor="">
+                            Relevant Experience
+                        </label>
+                        <input type="text" />
+                    </div>
+
+                </div>
+                <div className="noticePeriodDiv">
+                    <label htmlFor="">Notice Period</label>
+                    <div>
+                        <input type="number" name="" id="" className="inputEnterValue" />
+                        <input type="text" name="" id="" className="readOnlyInput" placeholder="Days" readOnly />
+                    </div>
+                </div>
+                <div className="joiningDateDiv">
+                    <label htmlFor="">Joining Date</label>
+                
+                      <input type="date" name="" id="" className="joiningDateInput" />
+            
+                </div>
+                <div className="currentCtcDiv">
+                    <label htmlFor="">Current CTC</label>
+                    <div>
+                        <input type="number" name="" id="" className="inputEnterValue" />
+                        <input type="text" name="" id="" className="readOnlyInput" placeholder="INR per year" readOnly />
+                    </div>
+                </div>
+                <div className="expectedCtcDiv">
+                    <label htmlFor="">Expected CTC</label>
+                    <div>
+                        <input type="number" name="" id="" className="inputEnterValue" />
+                        <input type="text" name="" id="" className="readOnlyInput" placeholder="INR per year" readOnly />
+                    </div>
+                </div>
+                <div className="uploadResumeDiv">
+                    <label htmlFor="">Upload Resume</label>
+                    <div className="uploadResumeInputDiv">
+
+                    <input type="file" name="" id=""  className="uploadResumeInput"/>
+                    </div>
+                </div>
+                <div className="idProofDiv">
+                    <label htmlFor="">ID Proof</label>
+                    <div>
+                        <select name="" id="" className="selctOption">
+                            <option value="" >Select Type</option>
+                        </select>
+                        <input type="file" name="" id=""  className="idProofInput" />
+                    </div>
+                </div>
+                <div>
+
+                </div>
+            </div>
+            <div className="footerDeclaration">
+                <input type="checkbox" name="" id="" />
+                <p>I hereby declare that all the information provided in this form is true, complete, and accurate to the best of my knowledge. </p>
+            </div>
+
+
+            <button onClick={savePersonDetails} className="saveButton">Save</button>
+     
+
         </div>
     );
 }

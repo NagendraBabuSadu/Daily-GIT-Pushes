@@ -4,16 +4,7 @@
   font-size: 10px;
 }
 
-button {
-  width: 8%;
-  height: 4rem;
-  border-radius: 4px;
-  font-size: 2rem;
-  margin: 10px;
-  color: white;
-  font-weight: 700;
-  background-color: navy;
-}
+
 
 .leftNavbarDiv {
   width: 250px;
@@ -67,7 +58,6 @@ li:hover {
 .loginPageDivHeadingText {
   /* background-color: aliceblue; */
   display: grid;
-  margin-bottom: 2rem;
   font-size: 3rem;
 }
 
@@ -91,8 +81,6 @@ li:hover {
 
 .buttonPlusText {
   margin-top: 20px;
-  /* background-color: aqua; */
-  /* display: grid; */
   width: 610px;
   font-size: 19px;
   margin-top: 4rem;
@@ -111,19 +99,28 @@ li:hover {
 .resumePage {
   margin-left: 300px;
   overflow: hidden;
-  background-color: rgb(181, 192, 192);
+  background-color: #d5d5d5;
   height: 98vh;
   font-size: 1.8rem;
   max-width: 82%;
-  /* position: relative; */
+  margin-right: 50px;
+  padding: 0.2%;
+  box-sizing: border-box;
+  border:1px dotted black;
+  
 }
 
 .personalDetails {
-  background-color: chocolate;
   height: 20vh;
   display: flex;
+  margin-top: 2px;
   max-width: 98%;
   margin-left: 15px;  
+  padding-bottom: 2%;
+  box-sizing: border-box;
+  padding-top: 10px;
+  border: 1px dotted rgb(39, 37, 37);
+  /* border-style:  none none solid none; */
 }
 
 .uploadImage{
@@ -132,25 +129,27 @@ li:hover {
 
 .personalDetails input {
   height: "100px";
-  background-color: chartreuse;
+  /* background-color: #251ca1; */
   height: 40px;
   font-size: large;
   padding-left: 13px;
+
 }
 
 .uploadImage input{
   background-color: blue;
-  
 }
 
 .firstNameLastNameGenderDob {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-  width: 1000vw;
+  gap: 10px;
+  width: 100vw;
   padding: 2px auto;
   margin-left: 30px;
+  margin-right: 15px;
 }
+
 
 .firstNameDiv,
 .lastNameDiv,
@@ -173,4 +172,125 @@ li:hover {
   transition: all ease 400ms;
   transform: scale(1.1);
   cursor: pointer;
+}
+
+
+.officialDetails {
+  height: 60vh;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin: 9px 15px 9px 15px;
+  padding: 1%;
+  gap: 2rem;
+  font-size: 1.6rem;
+  position: relative;
+  box-sizing: border-box;
+  border: 1px dotted rgb(39, 37, 37);
+ 
+}
+
+.officialDetails input{
+  width: 40%;
+  border-radius: 2px;
+  font-size: 1.7rem;
+  padding: 10px 7px;
+  box-sizing: border-box;
+    border: 1px solid gray;
+  /* height: fit-content; */
+}
+
+.emailDiv, .eduDiv, .joiningDateDiv, .idProofDiv{
+  display: flex;
+  flex-direction: column;
+}
+
+.uploadResumeInputDiv{
+  width: 100%;
+  background-color: rgb(255, 255, 255);
+  box-sizing: border-box;
+}
+
+
+.emailDiv input{
+  width:auto;
+}
+
+.eduDiv input{
+  width: auto;
+}
+
+.joiningDateDiv input{
+  width: auto;
+}
+
+.expDiv{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+
+}
+.totalExpDiv, .relExpDiv{
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+.currentCtcDiv div, .mobileNumberDiv div, .projectDiv div,  .expectedCtcDiv div, .noticePeriodDiv div, .jobRoleDiv div, .idProofDiv div{
+  width: 100%;
+  display: flex;
+}
+.expDiv input{
+  width: 100%;
+  /* gap: 10px; */
+}
+
+.idProofDiv {
+  width: 100%;
+}
+
+.inputEnterValue{
+  flex: 8
+}
+
+.readOnlyInput {
+  flex: 2;
+}
+
+.joiningDateInput{
+  width: auto;
+  background-color: rgb(255, 255, 255);
+  box-sizing: border-box;
+}
+
+.jobRoleInput, .projectInput, .mobileNumberInput, .idProofInput{
+  flex: 9;
+}
+
+.idProofInput {
+  width: 100%;
+  background-color: rgb(255, 255, 255);
+  box-sizing: border-box;
+}
+
+.selctOption {
+  flex: 1;
+}
+
+.footerDeclaration{
+  display: flex;
+  margin-left: 20px;
+  gap: 10px;
+  box-sizing: border-box;
+  border: 1px dotted rgb(39, 37, 37);
+  margin: 3px 15px 5px 15px;
+  margin-bottom: 11px;
+}
+
+.saveButton{
+  margin-left: 20px;
+  gap: 10px;  
+  font-size: larger;
+  margin: 3px 15px 5px 15px;
+  margin-bottom: 11px;
 }

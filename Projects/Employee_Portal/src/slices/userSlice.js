@@ -6,7 +6,7 @@ const initialState = {
 
 
 const userSlice = createSlice({
-    name: 'user', // navigates to the store data
+    name: 'email', // navigates to the store data
     initialState,
     reducers: {
         setEmail: (state, action) => {

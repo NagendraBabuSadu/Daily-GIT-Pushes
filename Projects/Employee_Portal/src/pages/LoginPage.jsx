@@ -55,7 +55,7 @@ export default function LoginPage() {
                         </p>
                     </div>
 
-                    <EmailComponent />
+                    <EmailComponent />  
                     <p>
                         By continuing, you are indicating that you have read and agree to
                         the <b> Terms of Use </b>and <b>Privacy Policy.</b>{" "}

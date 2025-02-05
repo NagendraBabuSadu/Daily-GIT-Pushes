@@ -1,7 +1,10 @@
 import {  useRef, useState } from "react";
+import { useUserContext } from "../../contexts/UserContext";
 
-export default function UserProfileImage({imageFile, setImageFile}) {
- 
+export default function UserProfileImage() {
+    
+    const {imageFile, setImageFile} = useUserContext();
+
     const [image, setImage] = useState(null);
     const fileInputRef = useRef(null);
     const handlePhoto = (event) => {

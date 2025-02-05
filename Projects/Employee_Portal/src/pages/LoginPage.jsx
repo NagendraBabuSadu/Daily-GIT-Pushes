@@ -5,12 +5,10 @@ import { useDispatch } from "react-redux";
 import { setEmail } from "../slices/userSlice";
 import { useState, useEffect } from "react";
 import connect from "/src/assets/images/connect.png"
-import EmailComponent from "../components/EmailComponent";
+import LoginEmailComponent from "../components/LoginEmailComponent";
 
 
 export default function LoginPage() {
-
-
 
     return (
         <div className="loginComponentDiv">
@@ -55,7 +53,7 @@ export default function LoginPage() {
                         </p>
                     </div>
 
-                    <EmailComponent />  
+                    <LoginEmailComponent />  
                     <p>
                         By continuing, you are indicating that you have read and agree to
                         the <b> Terms of Use </b>and <b>Privacy Policy.</b>{" "}

@@ -1,5 +1,4 @@
-import Astria_logo from "/src/assets/images/Astria_logo.png"
-
+import connect from "/src/assets/images/connect.png"
 
 export default function LeftNavigationComponent() {
     const navigationListData = ['Resume', 'Interview', 'Profile', 'Offer letter', 'Declaration', 'Appointment', 'Access Details', 'NDA', 'Client Access', 'Tax Declaration', 'Enroll Medical & PF'];
@@ -18,7 +17,7 @@ export default function LeftNavigationComponent() {
 
                 <img style={{
                     width: "170px"
-                }} src={Astria_logo} alt="" />
+                }} src={connect} alt="" />
 
 
             </div>
@@ -46,7 +45,7 @@ export default function LeftNavigationComponent() {
                                 cursor: "pointer",
                                 textAlign: "left",
                                 fontWeight: "bold"
-                            }} >{navItem}</li>
+                            }}  >{navItem}</li>
                         )
                     })}
                 </ol>

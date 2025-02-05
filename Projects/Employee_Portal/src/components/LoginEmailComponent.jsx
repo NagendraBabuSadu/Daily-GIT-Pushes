@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { setEmail } from "../slices/userSlice";
 import { useState, useEffect } from "react";
 
-export default function EmailComponent() {
+export default function LoginEmailComponent() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [email, setEmailInput] = useState(" ");

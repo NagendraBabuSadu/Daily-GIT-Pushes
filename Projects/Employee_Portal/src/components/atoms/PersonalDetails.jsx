@@ -1,16 +1,17 @@
 
+import { useUserContext } from "../../contexts/UserContext"
 import UserProfileImage from "../molecules/UserProfileImage"
 
 
-export default function PersonalDetails({user, setUser,  imageFile, setImageFile, handleUser}) {
+export default function PersonalDetails() {
 
-
+    const {user, setUser, handleUser, imageFile, setImageFile} = useUserContext();
   
     return (
         <div>
             <div className="personalDetails">
                 <div className="uploadImage">
-                    <UserProfileImage imageFile={imageFile} setImageFile={setImageFile} />
+                    <UserProfileImage  />
                 </div>
                 <div className="firstNameLastNameGenderDob">
                     <div className="firstNameDiv">

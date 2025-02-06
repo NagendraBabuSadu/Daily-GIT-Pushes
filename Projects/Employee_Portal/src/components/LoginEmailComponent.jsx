@@ -19,12 +19,12 @@ export default function LoginEmailComponent() {
         setEmailInput(storedEmail);
     };
 
-    const navigateToResumeScreen = () => {
+    const navigateToOtpScreen = () => {
         if (email) {
             console.log("email", email);
             localStorage.setItem("email", email);
             dispatch(setEmail({ emailId: email }));
-            navigate("/resume");
+            navigate("/authOtpLogin");
         } else {
             console.error("please enter a valid email");
         }
@@ -53,7 +53,7 @@ export default function LoginEmailComponent() {
                         transition: "all ease 200ms",
                     }}
                     className="buttonNext"
-                    onClick={navigateToResumeScreen}
+                    onClick={navigateToOtpScreen}
                 >
                     NEXT
                 </button>

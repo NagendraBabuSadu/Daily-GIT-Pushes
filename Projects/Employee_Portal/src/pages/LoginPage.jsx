@@ -1,12 +1,7 @@
 import wallPic from "/src/assets/images/wallPic.png";
-import Astria_logo from "/src/assets/images/Astria_logo.png";
-import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { setEmail } from "../slices/userSlice";
-import { useState, useEffect } from "react";
 import connect from "/src/assets/images/connect.png"
 import LoginEmailComponent from "../components/LoginEmailComponent";
-
+import { useState } from "react";
 
 export default function LoginPage() {
 

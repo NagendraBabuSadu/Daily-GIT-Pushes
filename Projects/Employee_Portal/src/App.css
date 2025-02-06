@@ -82,11 +82,14 @@ li:hover {
 .buttonPlusText {
   margin-top: 20px;
   width: 610px;
-  font-size: 19px;
   margin-top: 4rem;
   padding-top: 20px;
 }
 
+.buttonPlusText button{
+  padding: 10px;
+  font-size: x-large;
+}
 
 
 .buttonPlusText button:hover {
@@ -94,6 +97,8 @@ li:hover {
   transition: all ease 200ms;
   transform: scale(1.1);
   cursor: pointer;
+  border-radius: 5%;
+  color: #d5d5d5;
 }
 
 .resumePage {

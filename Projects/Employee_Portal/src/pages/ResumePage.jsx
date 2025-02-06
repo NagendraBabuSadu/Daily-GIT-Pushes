@@ -35,6 +35,7 @@ export default function ResumePage() {
 
     return (
         <UserContext.Provider value={{ user, setUser, handleUser, imageFile, setImageFile }} >
+            <LeftNavigationComponent />
             <div className="resumePage">
                 <PersonalDetails />
                 <OfficialDetails />

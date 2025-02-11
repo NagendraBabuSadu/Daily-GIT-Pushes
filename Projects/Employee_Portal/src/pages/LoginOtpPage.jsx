@@ -11,7 +11,7 @@ export default function LoginOtpPage() {
 
 
     const navigateToResumeScreen = () => {
-        navigate("/resume");
+        navigate("/interviewPage");
     };
 
 
@@ -53,7 +53,7 @@ export default function LoginOtpPage() {
                     <div className="loginPageDivHeadingText">
                         <h1>Onboarding Portal</h1>
                         <p>
-                            Welcome to Astria Digital! Please login to start your Onboarding
+                            Welcome to Connect Thou! Please login to start your Onboarding
                             journey.{" "}
                         </p>
                     </div>

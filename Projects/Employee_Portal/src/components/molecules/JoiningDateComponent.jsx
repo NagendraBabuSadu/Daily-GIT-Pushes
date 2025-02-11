@@ -1,10 +1,7 @@
 
 
-import { useUserContext } from "../../contexts/UserContext"
-
-
 export default function JoiningDateComponent() {
-    const { user, handleUser } = useUserContext();
+
     return (
 
         <div className="joiningDateDiv">

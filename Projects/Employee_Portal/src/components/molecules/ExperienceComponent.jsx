@@ -1,9 +1,7 @@
 
-import { useUserContext } from "../../contexts/UserContext"
-
 
 export default function ExperienceComponent() {
-    const { user, handleUser } = useUserContext();
+
     return ( 
         <div className="expDiv">
         <div className="totalExpDiv">

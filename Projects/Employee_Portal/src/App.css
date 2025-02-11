@@ -4,8 +4,6 @@
   font-size: 10px;
 }
 
-
-
 .leftNavbarDiv {
   width: 250px;
   height: 100vh;
@@ -23,6 +21,14 @@ li:hover {
   border-radius: 5px;
   transform: scale(1.2);
 }
+
+.listOfNavItemsSelected {
+  background-color: blue; /* background on hover */
+  border-radius: 5px;
+  transform: scale(1.1);
+  color: white; /* color on hover */
+}
+
 .loginComponentDiv {
   display: flex;
   flex-direction: column; /* Stack the elements vertically */
@@ -86,11 +92,14 @@ li:hover {
   padding-top: 20px;
 }
 
-.buttonPlusText button{
+.buttonPlusText button {
   padding: 10px;
   font-size: x-large;
+  background-color: darkgreen;
+  margin-top: 3rem;
+  color: #d5d5d5;
+  cursor: pointer;
 }
-
 
 .buttonPlusText button:hover {
   background-color: green;
@@ -101,7 +110,8 @@ li:hover {
   color: #d5d5d5;
 }
 
-.resumePage {
+.resumePage,
+.interviewPage {
   margin-left: 300px;
   overflow: hidden;
   background-color: #d5d5d5;
@@ -111,7 +121,7 @@ li:hover {
   margin-right: 50px;
   padding: 0.2%;
   box-sizing: border-box;
-  border:1px dotted black;
+  border: 1px dotted black;
 }
 
 .personalDetails {
@@ -119,7 +129,7 @@ li:hover {
   display: flex;
   margin-top: 2px;
   max-width: 98%;
-  margin-left: 15px;  
+  margin-left: 15px;
   padding-bottom: 2%;
   box-sizing: border-box;
   padding-top: 10px;
@@ -127,7 +137,7 @@ li:hover {
   /* border-style:  none none solid none; */
 }
 
-.uploadImage{
+.uploadImage {
   display: grid;
 }
 
@@ -137,10 +147,9 @@ li:hover {
   height: 40px;
   font-size: large;
   padding-left: 13px;
-
 }
 
-.uploadImage input{
+.uploadImage input {
   background-color: blue;
 }
 
@@ -153,7 +162,6 @@ li:hover {
   margin-left: 30px;
   margin-right: 15px;
 }
-
 
 .firstNameDiv,
 .lastNameDiv,
@@ -171,13 +179,12 @@ li:hover {
   padding-left: 13px;
 }
 
-.resumePage button:hover{
+.resumePage button:hover {
   background-color: green;
   transition: all ease 400ms;
   transform: scale(1.1);
   cursor: pointer;
 }
-
 
 .officialDetails {
   height: 60vh;
@@ -190,61 +197,68 @@ li:hover {
   position: relative;
   box-sizing: border-box;
   border: 1px dotted rgb(39, 37, 37);
- 
 }
 
-.officialDetails input{
+.officialDetails input {
   width: 40%;
   border-radius: 2px;
   font-size: 1.7rem;
   padding: 10px 7px;
   box-sizing: border-box;
-    border: 1px solid gray;
+  border: 1px solid gray;
   /* height: fit-content; */
 }
 
-.emailDiv, .eduDiv, .joiningDateDiv, .idProofDiv{
+.emailDiv,
+.eduDiv,
+.joiningDateDiv,
+.idProofDiv {
   display: flex;
   flex-direction: column;
 }
 
-.uploadResumeInputDiv{
+.uploadFileInputDiv {
   width: 100%;
   background-color: rgb(255, 255, 255);
   box-sizing: border-box;
 }
 
-
-.emailDiv input{
-  width:auto;
-}
-
-.eduDiv input{
+.emailDiv input {
   width: auto;
 }
 
-.joiningDateDiv input{
+.eduDiv input {
   width: auto;
 }
 
-.expDiv{
+.joiningDateDiv input {
+  width: auto;
+}
+
+.expDiv {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 40px;
-
 }
-.totalExpDiv, .relExpDiv{
+.totalExpDiv,
+.relExpDiv {
   display: flex;
   flex-direction: column;
 }
 
-
-
-.currentCtcDiv div, .mobileNumberDiv div, .projectDiv div,  .expectedCtcDiv div, .noticePeriodDiv div, .jobRoleDiv div, .idProofDiv div{
+.currentCtcDiv div,
+.mobileNumberDiv div,
+.projectDiv div,
+.expectedCtcDiv div,
+.noticePeriodDiv div,
+.jobRoleDiv div,
+.idProofDiv div,
+.bloodGroupDiv div {
   width: 100%;
   display: flex;
 }
-.expDiv input{
+.expDiv input,
+.bloodGroupDiv input {
   width: 100%;
   /* gap: 10px; */
 }
@@ -253,21 +267,24 @@ li:hover {
   width: 100%;
 }
 
-.inputEnterValue{
-  flex: 8
+.inputEnterValue {
+  flex: 8;
 }
 
 .readOnlyInput {
   flex: 2;
 }
 
-.joiningDateInput{
+.joiningDateInput {
   width: auto;
   background-color: rgb(255, 255, 255);
   box-sizing: border-box;
 }
 
-.jobRoleInput, .projectInput, .mobileNumberInput, .idProofInput{
+.jobRoleInput,
+.projectInput,
+.mobileNumberInput,
+.idProofInput {
   flex: 9;
 }
 
@@ -281,7 +298,7 @@ li:hover {
   flex: 1;
 }
 
-.footerDeclaration{
+.footerDeclaration {
   display: flex;
   margin-left: 20px;
   gap: 10px;
@@ -291,10 +308,52 @@ li:hover {
   margin-bottom: 11px;
 }
 
-.saveButton{
+.saveButton {
   margin-left: 20px;
-  gap: 10px;  
+  gap: 10px;
   font-size: larger;
   margin: 3px 15px 5px 15px;
-  margin-bottom: 11px;
+  border-radius: 1rem;
+  padding: 1rem;
+}
+
+.saveButton:hover {
+  transition: all ease-in 500ms;
+  background-color: #1d8503;
+  color: #f1f1f1;
+  cursor: pointer;
+}
+
+.profilePage {
+  margin-left: 300px;
+  background-color: #dbdbdb;
+  font-size: 1.8rem;
+  margin-right: 50px;
+  padding: 0.2%;
+  box-sizing: border-box;
+  border: 1px dotted black;
+}
+
+.profileDetails{
+  border: 1px dotted rgb(39, 37, 37);
+  margin: 9px 15px 9px 15px;
+  padding: 1%;
+}
+
+.residenceDetails, .bankDetails{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  font-size: 1.6rem;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.profileDetails input {
+  width: 100%;
+  border-radius: 2px;
+  font-size: 1.7rem;
+  padding: 10px 7px;
+  box-sizing: border-box;
+  border: 1px solid gray;
 }

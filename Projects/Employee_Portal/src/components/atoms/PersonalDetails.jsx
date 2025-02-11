@@ -1,17 +1,22 @@
 
-import { useUserContext } from "../../contexts/UserContext"
+
+import { useSelector } from "react-redux";
+import useUserHook from "../../hooks/UseUserHook";
 import UserProfileImage from "../molecules/UserProfileImage"
 
 
-export default function PersonalDetails() {
+export default function PersonalDetails(props) {
 
-    const {user, setUser, handleUser, imageFile, setImageFile} = useUserContext();
-  
+
+    const { user, handleUser, savePersonDetails, setImageFile, imageFile } = props;
+    const userSelector = useSelector((state) => state.resumeProfile.user);
+
+
     return (
         <div>
             <div className="personalDetails">
                 <div className="uploadImage">
-                    <UserProfileImage  />
+                    <UserProfileImage user={user} handleUser={handleUser} setImageFile={setImageFile} imageFile={imageFile} />
                 </div>
                 <div className="firstNameLastNameGenderDob">
                     <div className="firstNameDiv">
@@ -19,7 +24,7 @@ export default function PersonalDetails() {
                         <input
                             name="firstName"
                             type="text"
-                            value={user.firstName}
+                            value={user?.firstName}
                             onChange={handleUser}
                         />
                     </div>
@@ -28,7 +33,7 @@ export default function PersonalDetails() {
                         <input
                             type="text"
                             name="lastName"
-                            value={user.lastName}
+                            value={user?.lastName}
                             onChange={handleUser}
                         />
                     </div>
@@ -37,7 +42,7 @@ export default function PersonalDetails() {
                         <select
                             name="gender"
                             id="gender"
-                            value={user.gender}
+                            value={user?.gender}
                             onChange={handleUser}
                         >
                             <option value="" style={{ opacity: "0.6" }} defaultChecked>
@@ -54,16 +59,15 @@ export default function PersonalDetails() {
 
                         <input
                             type="date"
-                            // ref={dobRef}
                             name="dateOfBirth"
                             id="dateOfBirth"
-                            value={user.dob}
+                            value={user?.dateOfBirth}
                             onChange={handleUser}
                         />
 
                     </div>
                 </div>
-                
+
             </div>
         </div>
     )

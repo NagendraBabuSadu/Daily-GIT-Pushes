@@ -1,10 +1,6 @@
 
-
-import { useUserContext } from "../../contexts/UserContext"
-
-
 export default function IdProofComponent() {
-    const { user, handleUser } = useUserContext();
+ 
     return (
 
 

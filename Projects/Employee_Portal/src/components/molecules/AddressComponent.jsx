@@ -1,8 +1,7 @@
 
 import { useSelector } from "react-redux";
-import useUserHook from "../../hooks/UseUserHook";
 
-export default function EmailComponent(props) {
+export default function AddressComponent(props) {
     
     const {user, handleUser} = props;
     const userSelector = useSelector((state) => state.resumeProfile.user);
@@ -10,12 +9,12 @@ export default function EmailComponent(props) {
     console.log("email", user?.userEmail)
 
     return (
-        <div className="emailDiv">
-            <label htmlFor="email">Email</label>
+        <div className="addressDiv">
+            <label htmlFor="address">Address</label>
             <input
-                type="email"
-                name="userEmail"
-                value={user?.userEmail}
+                type="text"
+                name="userAddress"
+                value={user?.userAddress}
                 onChange={handleUser}               
             />
         </div>

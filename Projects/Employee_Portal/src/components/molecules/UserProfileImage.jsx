@@ -1,17 +1,23 @@
-import {  useRef, useState } from "react";
-import { useUserContext } from "../../contexts/UserContext";
+import { useRef, useState } from "react";
+import { useSelector } from "react-redux";
+import useUserHook from "../../hooks/UseUserHook";
+import { useDispatch } from "react-redux";
+// import { setUserDispatch } from "../slices/resumeSlice"
 
-export default function UserProfileImage() {
-    
-    const {imageFile, setImageFile} = useUserContext();
+export default function UserProfileImage(props) {
 
-    const [image, setImage] = useState(null);
+    const { imageFile, setImageFile } = props;
+    const userSelector = useSelector((state) => state.resumeProfile.user);
+    const [image, setImage] = useState(userSelector?.image ?? null);
     const fileInputRef = useRef(null);
     const handlePhoto = (event) => {
-        const file = URL.createObjectURL(event.target.files[0])
+        const file = URL.createObjectURL(event.target.files[0]);
+        console.log("----------file", file)
         setImageFile(file);
-        const uploadedImageUrl = setImage(URL.createObjectURL(event.target.files[0]));
-        console.log("uploadedImageUrl", URL.createObjectURL(event.target.files[0]));
+        setImage(URL.createObjectURL(event.target.files[0]));
+
+
+
         fileInputRef.current.value = "";
     };
 
@@ -48,6 +54,7 @@ export default function UserProfileImage() {
             {image ? (
                 <img
                     src={image}
+                    // value={user?.image}
                     alt="Uploaded Preview"
                     style={{
                         width: "80px",

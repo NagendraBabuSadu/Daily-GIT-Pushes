@@ -2,20 +2,20 @@
 import { useSelector } from "react-redux";
 import useUserHook from "../../hooks/UseUserHook";
 
-export default function EmailComponent(props) {
+export default function AccountNumberComponent(props) {
     
     const {user, handleUser} = props;
     const userSelector = useSelector((state) => state.resumeProfile.user);
 
-    console.log("email", user?.userEmail)
+    console.log("accountNumber", user?.useraccountNumber)
 
     return (
-        <div className="emailDiv">
-            <label htmlFor="email">Email</label>
+        <div className="accountNumberDiv">
+            <label htmlFor="userAccountNumber">A/C Number</label>
             <input
-                type="email"
-                name="userEmail"
-                value={user?.userEmail}
+                type="text"
+                name="userAccountNumber"
+                value={user?.userAccountNumber}
                 onChange={handleUser}               
             />
         </div>

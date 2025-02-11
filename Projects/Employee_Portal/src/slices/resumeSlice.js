@@ -10,7 +10,7 @@ const resumeSlice = createSlice({
     initialState,
     reducers: {
         setUserDispatch: (state, action) => {
-            console.log("-----> ", action.payload )
+
             const keys = Object.keys(action.payload)         
             state.user = action.payload; 
         }, 

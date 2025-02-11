@@ -1,8 +1,8 @@
-import { useUserContext } from "../../contexts/UserContext"
-import { useState } from "react";
+import useUserHook from "../../hooks/UseUserHook";
 
 export default function ProjectComponent() {
-    const { user, handleUser } = useUserContext();
+ 
+const { user,  handleUser } = useUserHook();
 
     return (
         <div className="projectDiv">
@@ -15,7 +15,7 @@ export default function ProjectComponent() {
                     className="projectInput"
                     placeholder="Select or type a project"
                     onChange={handleUser}
-                    value={user.projectName}
+                    value={  user?.projectName}
                 />
 
                 <datalist id="projectOptions">

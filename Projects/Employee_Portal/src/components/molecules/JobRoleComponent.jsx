@@ -1,7 +1,9 @@
-import { useUserContext } from "../../contexts/UserContext";
+import useUserHook from "../../hooks/UseUserHook";
+
 
 export default function JobRoleComponent() {
-  const { user, handleUser } = useUserContext();
+const { user,  handleUser } = useUserHook();
+
   return (
     <div className="jobRoleDiv">
       <label htmlFor="">Job Role</label>
@@ -13,7 +15,7 @@ export default function JobRoleComponent() {
           className="jobRoleInput"
           placeholder="Select a Job Role"
           onChange={handleUser}
-          value={user.jobRole}
+          value={  user?.jobRole}
         />
 
         <datalist id="roleOptions">

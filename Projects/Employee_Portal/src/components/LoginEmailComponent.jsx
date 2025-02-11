@@ -21,7 +21,7 @@ export default function LoginEmailComponent() {
 
     const navigateToOtpScreen = () => {
         if (email) {
-            console.log("email", email);
+      
             localStorage.setItem("email", email);
             dispatch(setEmail({ emailId: email }));
             navigate("/authOtpLogin");

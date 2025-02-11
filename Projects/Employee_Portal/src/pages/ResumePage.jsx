@@ -1,50 +1,33 @@
-import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { setUserDispatch } from "../slices/resumeSlice";
 import PersonalDetails from "../components/atoms/PersonalDetails";
 import OfficialDetails from "../components/atoms/OfficialDetails";
-import { UserContext } from "../contexts/UserContext";
-import LeftNavigationComponent from "../components/LeftNavigationComponent";
+import { useNavigate } from "react-router-dom";
+import useUserHook from "../hooks/UseUserHook";
+
 
 export default function ResumePage() {
-    const [user, setUser] = useState("");
-    const [imageFile, setImageFile] = useState("");
-    const dispatch = useDispatch();
-    const userSelector = useSelector((state) => state.resumeProfile.user);
 
-    const handleUser = (event) => {
-        const { name, value } = event.target;
-        setUser((prev) => ({
-            ...prev,
-            [name]: value,
-        }));
-    };
+    const { user, handleUser, savePersonDetails,setImageFile,imageFile } = useUserHook();
+    const navigate = useNavigate();
 
-    useEffect(() => {
-        if (userSelector) {
-            setUser(userSelector);
-            setImageFile(userSelector.image || "");
-        }
-    }, [userSelector]);
 
-    const savePersonDetails = () => {
-        console.log("save Details");
-        console.log("-----user", user)
-        dispatch(setUserDispatch({ ...user, image: imageFile }));
-    };
+    const navigateToProfilePage = () => {
+        navigate("/profilePage")
+    }
 
     return (
-        <UserContext.Provider value={{ user, setUser, handleUser, imageFile, setImageFile }} >
-            <LeftNavigationComponent />
+       
             <div className="resumePage">
-                <PersonalDetails />
-                <OfficialDetails />
+                <PersonalDetails user={user} handleUser={handleUser} setImageFile={setImageFile} imageFile={imageFile}  />
+                <OfficialDetails  user={user} handleUser={handleUser} />
+           
                 <div className="footerDeclaration">
-                    <input type="checkbox" name="" id="" />
+                    <input type="checkbox" name="checked" id="" value={user?.checked} onChange={handleUser} />
                     <p>I hereby declare that all the information provided in this form is true, complete, and accurate to the best of my knowledge. </p>
                 </div>
-                <button onClick={savePersonDetails} className="saveButton">Save</button>
+
+                <button type="button"  onClick={savePersonDetails} className="saveButton" >Save</button>
+                <button disabled={!user?.saveButton} onClick={navigateToProfilePage} className="saveButton">Submit</button>
             </div>
-        </UserContext.Provider>
+     
     );
 }

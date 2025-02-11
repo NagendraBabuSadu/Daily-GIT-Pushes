@@ -1,4 +1,3 @@
-import { useUserContext } from "../../contexts/UserContext";
 import CurrentCtcComponent from "../molecules/CurrentCtcComponent";
 import EduDivComponent from "../molecules/EduDivComponent";
 import EmailComponent from "../molecules/EmailComponent";
@@ -12,14 +11,15 @@ import NoticePeriodComponent from "../molecules/NoticePeriodComponent";
 import ProjectComponent from "../molecules/ProjectComponent";
 import UploadResumeComponent from "../molecules/UploadResumeComponent";
 
-export default function OfficialDetails() {
-  const { user, handleUser } = useUserContext();
+export default function OfficialDetails(props) {
+
+  const {user, handleUser} = props;
 
   return (
     <div>
       <div className="officialDetails">
         {/* Official Details */}
-        <EmailComponent />
+        <EmailComponent user={user} handleUser={handleUser} />
         <MobileNumberComponent />
         <EduDivComponent />
         <ProjectComponent />
